@@ -282,19 +282,155 @@ function buildFinalReport() {
   ].join("\n");
 }
 
-function buildAiPrompt() {
+function claimLine(row) {
+  return `${row.claim.id} | ${row.claim.category} | C ${Math.round(row.response.confidence)} | P ${Math.round(row.response.personalSubstantiation)} | weight ${row.weight.toFixed(2)} | gap ${Math.round(row.gap)} | tension ${Math.round(row.tension)} | ${row.claim.text}`;
+}
+
+function bridgeLedgerLine(row) {
+  const dependencies = row.claim.dependencyIds
+    .map((id) => {
+      const dependency = state.claims.find((claim) => claim.id === id);
+      const response = state.profile.responses[id];
+      const confidence = response ? Math.round(response.confidence) : "unrated";
+      return `${id} C ${confidence}${dependency ? ` (${dependency.text})` : ""}`;
+    })
+    .join("; ");
+
   return [
-    "Please analyze the following Theism Gradient profile.",
+    `Claim: ${row.claim.id} ${row.claim.text}`,
+    `Category: ${row.claim.category}`,
+    `Confidence: ${Math.round(row.response.confidence)}/100`,
+    `Personal substantiation: ${Math.round(row.response.personalSubstantiation)}/100`,
+    `Substantiation gap: ${Math.round(row.gap)}/100`,
+    `Dependency tension: ${Math.round(row.tension)}/100`,
+    `Prerequisite bridge claims: ${dependencies || "none"}`,
+    `User note: ${row.response.note || "none"}`
+  ].join("\n");
+}
+
+function buildFollowUpPrompts(rows) {
+  const topGap = [...rows].sort((a, b) => b.gap - a.gap)[0];
+  const topTension = [...rows].sort((a, b) => b.tension - a.tension)[0];
+  const topWeighted = [...rows].sort((a, b) => b.weight - a.weight)[0];
+  const christianRows = rows.filter((row) => row.claim.tradition === "Christianity");
+  const topChristian = [...christianRows].sort((a, b) => b.weight - a.weight)[0] ?? topWeighted;
+  const actionRows = rows.filter((row) => row.claim.gradientPosition >= 4);
+  const topAction = [...actionRows].sort((a, b) => b.gap + b.tension - (a.gap + a.tension))[0] ?? topGap;
+
+  const visualData = rows
+    .sort((a, b) => (b.gap + b.tension + b.weight * 25) - (a.gap + a.tension + a.weight * 25))
+    .slice(0, 8)
+    .map((row) => `${row.claim.id}: C ${Math.round(row.response.confidence)}, P ${Math.round(row.response.personalSubstantiation)}, gap ${Math.round(row.gap)}, tension ${Math.round(row.tension)}, weight ${row.weight.toFixed(2)}, category ${row.claim.category}`)
+    .join("; ");
+
+  return [
+    `1. Focus only on "${topGap?.claim.id ?? "the largest gap"}". What evidence would narrow the gap between my confidence and my personal substantiation without merely lowering standards?`,
+    `2. Focus only on "${topTension?.claim.id ?? "the largest dependency tension"}". Which prerequisite bridge claim is doing the most work, and what would independently support it?`,
+    `3. Rewrite my current strongest Christian commitment, "${topChristian?.claim.id ?? "the strongest Christian claim"}", as a more modest claim that preserves only what my current substantiation can support.`,
+    `4. Test whether my ratings for "${topAction?.claim.id ?? "the highest-pressure divine-action claim"}" confuse possibility, testimony, and evidential permission. What would count against the claim?`,
+    `5. Compare my category averages. Which transition in the gradient most looks like specificity inflation, and what bridge premise would repair it?`,
+    `6. Create an image prompt for a quantified visual depiction of this Theism Gradient profile. Use a clean analytical dashboard style, not a cartoon. Show the five gradient categories, aggregate position, theism index, average substantiation gap, strongest weighted commitments, largest gaps, and largest dependency tensions. Include prose insights explaining the two or three strongest tensions and the repair that would most reduce pressure. Data to visualize and interpret: ${visualData || "no rated claims yet"}.`
+  ];
+}
+
+function buildAiPrompt() {
+  const aggregate = aggregateGradientPosition(state.claims, state.profile);
+  const ewti = evidentiallyWeightedTheismIndex(state.claims, state.profile);
+  const gap = averageSubstantiationGap(state.claims, state.profile);
+  const rows = ratedClaimRows();
+  const alerts = buildDiagnostics(state.claims, state.profile);
+  const categoryLines = categoryAverages(state.claims, state.profile)
+    .map((item) => `- ${item.category}: confidence ${Math.round(item.confidence)}, personal substantiation ${Math.round(item.personalSubstantiation)}, rated ${item.count}`)
+    .join("\n");
+
+  const strongestRows = [...rows].sort((a, b) => b.weight - a.weight).slice(0, 10);
+  const gapRows = [...rows].sort((a, b) => b.gap - a.gap).filter((row) => row.gap >= 10).slice(0, 10);
+  const tensionRows = [...rows].sort((a, b) => b.tension - a.tension).filter((row) => row.tension >= 10).slice(0, 10);
+  const actionRows = rows.filter((row) => row.claim.gradientPosition >= 4);
+  const followUps = buildFollowUpPrompts(rows);
+
+  return [
+    "Copy/paste this entire prompt into an AI assistant.",
     "",
-    "Tasks:",
-    "1. Summarize the user's current position on the deism-to-Christian-theism gradient.",
-    "2. Identify where confidence outruns personal substantiation.",
-    "3. Identify downstream Christian claims that appear to outrun bridge claims.",
-    "4. Recommend which claims should be investigated first and what evidence would be most relevant.",
-    "5. Distinguish weaker support, such as coincidence or testimonial clustering, from stronger support, such as independently checkable evidence, durable patterns, and clear rival-hypothesis comparison.",
-    "6. Keep the tone analytical and non-dismissive.",
+    "You are a rigorous but fair Socratic auditor of Christian theism claims.",
+    "Help me examine whether my current profile moves from thin deistic claims to thicker Christian divine-action claims with adequate bridge premises. Do not simply reassure me or dunk on the profile. Separate truth, possibility, plausibility, and evidential permission.",
     "",
-    buildFinalReport()
+    "Your tasks:",
+    "1. Identify the strongest tensions in my profile.",
+    "2. Explain whether each tension is mainly a substantiation gap, dependency leap, scope drift, specificity inflation, testimonial overreach, or rival-explanation problem.",
+    "3. Ask targeted follow-up questions that would force the profile to become more consistent.",
+    "4. Suggest the most charitable repair that preserves what the evidence can support.",
+    "5. State what would need to be true for my stronger Christian conclusion to be licensed.",
+    "6. Generate several follow-up prompts I can paste back into an AI assistant to continue the analysis, including one image-generation prompt for a quantified visual depiction of the claim-gradient profile.",
+    "",
+    "Theory vocabulary to use:",
+    "- Claim gradient: claims become more specific as they move from minimal source claims toward Christian divine-action claims.",
+    "- Bridge premise: a premise needed to move from a thinner claim to a thicker downstream claim.",
+    "- Substantiation gap: confidence exceeds the user's ability to personally substantiate the claim.",
+    "- Dependency tension: a downstream claim is rated much higher than its prerequisite bridge claims.",
+    "- Scope drift: evidence from one domain is moved into another domain without showing the transfer is licensed.",
+    "- Specificity inflation: modest evidence for a broad claim is treated as evidence for a much richer Christian claim.",
+    "- Testimonial overreach: testimony is treated as stronger than its independence, specificity, controls, or rival explanations allow.",
+    "- Evidential permission: what the evidence licenses, as distinct from what might be true or personally meaningful.",
+    "",
+    "BEGIN CURRENT USER DATA",
+    "",
+    "Assessment context:",
+    "App: Theism Gradient",
+    "Focus: Christianity-focused claims about divine action, prayer, healing, wisdom, foreknowledge, scripture, Jesus, Spirit, salvation, and transformation.",
+    `Aggregate gradient position: ${aggregate ? aggregate.toFixed(2) : "0.00"} / 5`,
+    `Evidentially weighted theism index: ${ewti ? Math.round(ewti) : 0} / 100`,
+    `Average substantiation gap: ${gap ? Math.round(gap) : 0} / 100`,
+    `Claims rated: ${rows.length} / ${state.claims.length}`,
+    `Profile summary: ${profileSummary(state.claims, state.profile)}`,
+    "",
+    "Category profile:",
+    categoryLines,
+    "",
+    "Diagnostic flags:",
+    alerts.length
+      ? alerts.map((alert) => `- ${alert.type}: ${alert.message} Claim: ${alert.claim.text}`).join("\n")
+      : "- No diagnostic alerts generated by the app.",
+    "",
+    "Strongest weighted commitments:",
+    strongestRows.length
+      ? strongestRows.map((row) => `- ${claimLine(row)}`).join("\n")
+      : "- No rated claims yet.",
+    "",
+    "Largest substantiation gaps:",
+    gapRows.length
+      ? gapRows.map((row) => `- ${claimLine(row)}`).join("\n")
+      : "- No gap above 10 points yet.",
+    "",
+    "Largest dependency tensions:",
+    tensionRows.length
+      ? tensionRows.map((row) => `- ${claimLine(row)}`).join("\n")
+      : "- No dependency tension above 10 points yet.",
+    "",
+    "Christian divine-action ledger:",
+    actionRows.length
+      ? actionRows.map((row) => `\n${bridgeLedgerLine(row)}`).join("\n")
+      : "- No interventionist or specific Christian claims rated yet.",
+    "",
+    "Repair options generated by the audit:",
+    "- Modest claim: restrict the profile to the strongest lower-gradient claims that have both high confidence and high personal substantiation.",
+    "- Scope control: avoid treating general creator/source claims as support for Christian divine action until communication, agency, and intervention bridge claims are substantiated.",
+    "- Bridge premise: identify the missing premise needed to move from personal theism to prayer, healing, foreknowledge, scripture, Jesus, Spirit, or salvation.",
+    "- Evidence upgrade: distinguish coincidence, suggestion, testimonial clustering, and social reinforcement from independently checkable evidence and durable patterns.",
+    "- Burden shift: if a claim moves from possible to actual Christian divine action, require evidence that can discriminate between Christian agency and rival explanations.",
+    "",
+    "Suggested subsequent prompts to ask next:",
+    followUps.join("\n"),
+    "",
+    "END CURRENT USER DATA",
+    "",
+    "Please respond in this format:",
+    "1. A concise diagnosis of the profile.",
+    "2. The top three tensions, each tied to a specific claim.",
+    "3. The bridge premise or differentiator that would most improve the profile, stated as a testable or independently defensible premise.",
+    "4. Five Socratic questions I should answer before treating the strongest Christian conclusion as licensed.",
+    "5. A repaired version of the profile that avoids overclaiming.",
+    "6. Six follow-up prompts I can paste next, each focused on a specific unresolved tension in this audit; one must ask for an image prompt that depicts the claim-gradient profile and tensions quantitatively."
   ].join("\n");
 }
 
