@@ -161,10 +161,10 @@ button:hover {
 .hub-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
-  gap: clamp(28px, 6vw, 72px);
+  gap: clamp(24px, 5vw, 56px);
   align-items: center;
-  min-height: calc(100vh - 72px);
-  padding: clamp(36px, 8vh, 82px) 0;
+  min-height: auto;
+  padding: clamp(28px, 6vh, 58px) 0 clamp(26px, 5vh, 48px);
 }
 
 .hub-copy h1 {
@@ -256,7 +256,7 @@ button:hover {
 }
 
 .hub-section {
-  padding: 64px 0 84px;
+  padding: 34px 0 54px;
   border-top: 1px solid var(--line);
 }
 
@@ -270,8 +270,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 260px;
-  padding: 24px;
+  min-height: 210px;
+  padding: 20px;
 }
 
 .app-card h3 {
