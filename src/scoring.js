@@ -3,7 +3,7 @@ export const categories = [
   "Design Deism",
   "Personal Theism",
   "Interventionist Theism",
-  "Specific Abrahamic Theism"
+  "Specific Christian Theism"
 ];
 
 export function clampScore(value) {
@@ -150,7 +150,7 @@ export function profileSummary(claims, profile) {
         ? "personal-theistic leaning"
         : aggregate < 4.3
           ? "interventionist or revelatory"
-          : "strongly tradition-specific";
+          : "strongly Christian-theistic";
 
   const gapText = gap >= 30
     ? "with a noticeable gap between confidence and personal substantiation"

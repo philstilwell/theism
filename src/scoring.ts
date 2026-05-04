@@ -1,11 +1,11 @@
-export type Tradition = 'general' | 'Judaism' | 'Christianity' | 'Islam' | 'other';
+export type Tradition = 'general' | 'Christianity' | 'other';
 
 export type ClaimCategory =
   | 'Minimal Deism'
   | 'Design Deism'
   | 'Personal Theism'
   | 'Interventionist Theism'
-  | 'Specific Abrahamic Theism';
+  | 'Specific Christian Theism';
 
 export interface Claim {
   id: string;
@@ -184,7 +184,7 @@ export function profileSummary(claims: Claim[], profile: UserProfile): string {
         ? 'personal-theistic leaning'
         : aggregate < 4.3
           ? 'interventionist or revelatory'
-          : 'strongly tradition-specific';
+          : 'strongly Christian-theistic';
 
   const gapText = (gap ?? 0) >= 30
     ? 'with a noticeable gap between confidence and personal substantiation'

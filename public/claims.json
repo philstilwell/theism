@@ -479,7 +479,7 @@
   },
   {
     "id": "C032",
-    "text": "God has performed detectable miracles.",
+    "text": "God can perform public, detectable miracles rather than only private or inward experiences.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
@@ -495,7 +495,7 @@
   },
   {
     "id": "C033",
-    "text": "God has answered some prayers in ways that differ from chance or ordinary causation.",
+    "text": "God can answer prayer in ways that differ from chance or ordinary causation.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
@@ -514,25 +514,7 @@
   },
   {
     "id": "C034",
-    "text": "God has healed some sick people through divine action rather than ordinary medical or biological processes.",
-    "category": "Interventionist Theism",
-    "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "general",
-    "tags": [
-      "healing",
-      "miracle"
-    ],
-    "dependencyIds": [
-      "C027",
-      "C031",
-      "C032",
-      "C033"
-    ]
-  },
-  {
-    "id": "C035",
-    "text": "God has communicated specific messages to selected human beings.",
+    "text": "God can communicate specific moral, historical, or theological information to human beings.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
@@ -542,30 +524,14 @@
       "revelation"
     ],
     "dependencyIds": [
+      "C026",
       "C028",
       "C031"
     ]
   },
   {
-    "id": "C036",
-    "text": "Some human religious experiences are caused by God rather than by ordinary psychological or social processes.",
-    "category": "Interventionist Theism",
-    "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "general",
-    "tags": [
-      "religious-experience",
-      "causation"
-    ],
-    "dependencyIds": [
-      "C021",
-      "C023",
-      "C031"
-    ]
-  },
-  {
-    "id": "C037",
-    "text": "Some prophetic claims are genuinely caused by divine revelation.",
+    "id": "C035",
+    "text": "Some prophetic or revelatory claims can be genuinely caused by God rather than merely by human religious imagination.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
@@ -576,135 +542,118 @@
     ],
     "dependencyIds": [
       "C028",
-      "C035"
+      "C034"
     ]
   },
   {
-    "id": "C038",
-    "text": "Some sacred texts contain information that came from God.",
+    "id": "C036",
+    "text": "Some sacred texts can preserve information from God without every interpretive tradition about those texts being correct.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
     "tradition": "general",
     "tags": [
       "scripture",
-      "revelation"
+      "revelation",
+      "interpretation"
     ],
     "dependencyIds": [
-      "C028",
+      "C034",
+      "C035"
+    ]
+  },
+  {
+    "id": "C037",
+    "text": "The Hebrew Bible can function as a historically and theologically relevant background for evaluating Christian claims.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "Christianity",
+    "tags": [
+      "Hebrew Bible",
+      "background",
+      "covenant"
+    ],
+    "dependencyIds": [
       "C035",
-      "C037"
+      "C036"
+    ]
+  },
+  {
+    "id": "C038",
+    "text": "First-century reports about Jesus can be assessed as historical claims rather than only as later community symbolism.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "Christianity",
+    "tags": [
+      "Jesus",
+      "history",
+      "method"
+    ],
+    "dependencyIds": [
+      "C031",
+      "C036"
     ]
   },
   {
     "id": "C039",
-    "text": "God has intentionally guided human history toward specific outcomes.",
+    "text": "Jesus' ministry plausibly included public acts or teachings that his earliest followers reasonably interpreted as signs of divine authority.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "history",
-      "guidance"
+      "Jesus",
+      "miracle",
+      "authority"
     ],
     "dependencyIds": [
-      "C025",
-      "C027",
-      "C031"
+      "C032",
+      "C034",
+      "C038"
     ]
   },
   {
     "id": "C040",
-    "text": "God has made enough evidence available for humans to identify at least one true revealed religion.",
+    "text": "God has made enough evidence available for humans to identify Christianity as a serious candidate for revealed religion.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "religion",
+      "Christianity",
       "evidence",
       "revelation"
     ],
     "dependencyIds": [
       "C026",
-      "C035",
+      "C034",
+      "C036",
       "C038"
     ]
   },
   {
     "id": "C041",
-    "text": "The God who exists is the God identified in the Hebrew Bible as YHWH.",
-    "category": "Specific Abrahamic Theism",
+    "text": "The God relevant to Christianity is the God of Israel identified in the Hebrew Bible as YHWH.",
+    "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
-    "tradition": "Judaism",
+    "tradition": "Christianity",
     "tags": [
       "YHWH",
-      "Hebrew Bible"
+      "Hebrew Bible",
+      "Christianity"
     ],
     "dependencyIds": [
-      "C035",
-      "C038",
+      "C037",
       "C040"
     ]
   },
   {
     "id": "C042",
-    "text": "The covenantal claims made in the Torah reflect actual divine communication rather than merely human religious tradition.",
-    "category": "Specific Abrahamic Theism",
-    "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Judaism",
-    "tags": [
-      "Torah",
-      "covenant"
-    ],
-    "dependencyIds": [
-      "C035",
-      "C038",
-      "C041"
-    ]
-  },
-  {
-    "id": "C043",
-    "text": "The Exodus and Sinai traditions preserve real divine action in Israel's history.",
-    "category": "Specific Abrahamic Theism",
-    "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Judaism",
-    "tags": [
-      "Exodus",
-      "Sinai",
-      "history"
-    ],
-    "dependencyIds": [
-      "C031",
-      "C035",
-      "C039",
-      "C041"
-    ]
-  },
-  {
-    "id": "C044",
-    "text": "The prophetic literature of ancient Israel contains genuine messages from God.",
-    "category": "Specific Abrahamic Theism",
-    "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Judaism",
-    "tags": [
-      "prophets",
-      "Hebrew Bible"
-    ],
-    "dependencyIds": [
-      "C037",
-      "C038",
-      "C041"
-    ]
-  },
-  {
-    "id": "C045",
     "text": "Jesus of Nazareth was bodily resurrected after death.",
-    "category": "Specific Abrahamic Theism",
+    "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
@@ -714,16 +663,35 @@
       "history"
     ],
     "dependencyIds": [
-      "C027",
       "C031",
       "C032",
-      "C035"
+      "C038",
+      "C039"
     ]
   },
   {
-    "id": "C046",
+    "id": "C043",
+    "text": "The resurrection of Jesus, if substantiated, is best explained as divine vindication rather than as an unknown natural anomaly.",
+    "category": "Specific Christian Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "resurrection",
+      "explanation",
+      "vindication"
+    ],
+    "dependencyIds": [
+      "C030",
+      "C031",
+      "C040",
+      "C042"
+    ]
+  },
+  {
+    "id": "C044",
     "text": "Jesus was not merely a prophet or teacher but uniquely divine in the sense affirmed by historic Christianity.",
-    "category": "Specific Abrahamic Theism",
+    "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
@@ -733,33 +701,53 @@
       "Christology"
     ],
     "dependencyIds": [
-      "C035",
+      "C034",
       "C038",
-      "C045"
+      "C042",
+      "C043"
     ]
   },
   {
-    "id": "C047",
+    "id": "C045",
+    "text": "The incarnation claim that God became human in Jesus is substantiable rather than only a later theological metaphor.",
+    "category": "Specific Christian Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "incarnation",
+      "Jesus",
+      "Christology"
+    ],
+    "dependencyIds": [
+      "C041",
+      "C042",
+      "C044"
+    ]
+  },
+  {
+    "id": "C046",
     "text": "The crucifixion of Jesus had a divinely intended salvific function.",
-    "category": "Specific Abrahamic Theism",
+    "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
     "tags": [
       "crucifixion",
+      "atonement",
       "salvation"
     ],
     "dependencyIds": [
       "C025",
-      "C035",
-      "C045",
-      "C046"
+      "C034",
+      "C042",
+      "C044"
     ]
   },
   {
-    "id": "C048",
+    "id": "C047",
     "text": "The New Testament reliably preserves the central divine claims about Jesus.",
-    "category": "Specific Abrahamic Theism",
+    "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
@@ -769,42 +757,68 @@
       "textual-reliability"
     ],
     "dependencyIds": [
+      "C036",
       "C038",
-      "C045",
-      "C046"
+      "C042",
+      "C044"
+    ]
+  },
+  {
+    "id": "C048",
+    "text": "The earliest apostolic proclamation about Jesus was authorized by God rather than merely by human religious enthusiasm.",
+    "category": "Specific Christian Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "apostles",
+      "authority",
+      "church"
+    ],
+    "dependencyIds": [
+      "C034",
+      "C040",
+      "C042",
+      "C047"
     ]
   },
   {
     "id": "C049",
-    "text": "The Qur'an is a revelation from God rather than a merely human religious text.",
-    "category": "Specific Abrahamic Theism",
+    "text": "The Holy Spirit continues God's personal agency in Christian life, worship, and moral transformation.",
+    "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
-    "tradition": "Islam",
+    "tradition": "Christianity",
     "tags": [
-      "Quran",
-      "revelation"
+      "Holy Spirit",
+      "agency",
+      "transformation"
     ],
     "dependencyIds": [
-      "C035",
-      "C038",
-      "C040"
+      "C030",
+      "C033",
+      "C044",
+      "C048"
     ]
   },
   {
     "id": "C050",
-    "text": "Muhammad was genuinely commissioned by God as a prophet.",
-    "category": "Specific Abrahamic Theism",
+    "text": "Historic Christianity's core claim is true: the triune God has acted through Jesus Christ for human salvation.",
+    "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
-    "tradition": "Islam",
+    "tradition": "Christianity",
     "tags": [
-      "Muhammad",
-      "prophecy"
+      "Trinity",
+      "Jesus",
+      "salvation",
+      "Christianity"
     ],
     "dependencyIds": [
-      "C035",
-      "C037",
+      "C041",
+      "C044",
+      "C045",
+      "C046",
       "C049"
     ]
   }
