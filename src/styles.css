@@ -492,14 +492,20 @@ h2 {
   border-bottom: 1px solid var(--line);
   background:
     linear-gradient(to top, rgba(23, 32, 29, 0.06) 1px, transparent 1px),
-    linear-gradient(to right, rgba(23, 32, 29, 0.06) 1px, transparent 1px);
-  background-size: 100% 25%, 25% 100%;
+    linear-gradient(to right, rgba(23, 32, 29, 0.04) 1px, transparent 1px);
+  background-size: 100% 25%, 20% 100%;
+}
+
+.scatter-axis,
+.x-tick,
+.y-tick,
+.category-lane {
+  position: absolute;
 }
 
 .scatter-axis,
 .x-tick,
 .y-tick {
-  position: absolute;
   color: var(--muted);
   font-size: 0.72rem;
 }
@@ -527,8 +533,21 @@ h2 {
   transform: translateY(50%);
 }
 
+.category-lane {
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  border-right: 1px solid rgba(102, 117, 44, 0.14);
+  background: rgba(102, 117, 44, 0.055);
+}
+
+.category-lane:nth-of-type(4n + 1) {
+  background: rgba(63, 113, 128, 0.055);
+}
+
 .point {
   position: absolute;
+  z-index: 2;
   min-height: 0;
   padding: 0;
   border: 2px solid #fff;

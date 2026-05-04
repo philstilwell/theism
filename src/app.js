@@ -308,6 +308,27 @@ function bridgeLedgerLine(row) {
   ].join("\n");
 }
 
+function tensionKind(row) {
+  if (row.gap >= 35 && row.tension >= 25) return "substantiation gap plus dependency leap";
+  if (row.gap >= 35) return "substantiation gap";
+  if (row.tension >= 25) return "dependency leap";
+  if (row.claim.gradientPosition >= 4 && row.weight >= 0.5) return "Christian specificity pressure";
+  if (row.claim.tags.some((tag) => ["testimony", "religious experience", "dreams", "visions"].includes(tag.toLowerCase()))) return "testimonial or experience-pressure";
+  return "ordinary evidential pressure";
+}
+
+function evidenceWarning(row) {
+  const tags = row.claim.tags.map((tag) => tag.toLowerCase()).join(" ");
+  if (tags.includes("healing")) return "Check medical baseline, independent confirmation, durability, and ordinary recovery explanations.";
+  if (tags.includes("prayer")) return "Check timing, specificity, comparison cases, unanswered prayers, and selection effects.";
+  if (tags.includes("prophecy") || tags.includes("foreknowledge")) return "Check prior documentation, specificity, falsifiability, and fit-after-the-fact risk.";
+  if (tags.includes("wisdom") || tags.includes("guidance") || tags.includes("discernment")) return "Check whether the result exceeds ordinary reflection, intuition, community influence, or hindsight.";
+  if (tags.includes("scripture")) return "Check whether scripture is being used as evidence, authority, interpretation, or conclusion.";
+  if (tags.includes("jesus") || tags.includes("resurrection")) return "Check whether historical evidence and prior miracle/revelation premises are doing distinct work.";
+  if (tags.includes("holy spirit") || tags.includes("spiritual gifts")) return "Check testability, safeguards against suggestion, and consistency with Christian moral aims.";
+  return "Check rival explanations, scope limits, and what evidence would lower confidence.";
+}
+
 function buildFollowUpPrompts(rows) {
   const topGap = [...rows].sort((a, b) => b.gap - a.gap)[0];
   const topTension = [...rows].sort((a, b) => b.tension - a.tension)[0];
@@ -347,6 +368,9 @@ function buildAiPrompt() {
   const gapRows = [...rows].sort((a, b) => b.gap - a.gap).filter((row) => row.gap >= 10).slice(0, 10);
   const tensionRows = [...rows].sort((a, b) => b.tension - a.tension).filter((row) => row.tension >= 10).slice(0, 10);
   const actionRows = rows.filter((row) => row.claim.gradientPosition >= 4);
+  const pressureRows = [...rows]
+    .sort((a, b) => (b.gap + b.tension + b.weight * 20) - (a.gap + a.tension + a.weight * 20))
+    .slice(0, 12);
   const followUps = buildFollowUpPrompts(rows);
 
   return [
@@ -407,6 +431,16 @@ function buildAiPrompt() {
       ? tensionRows.map((row) => `- ${claimLine(row)}`).join("\n")
       : "- No dependency tension above 10 points yet.",
     "",
+    "Tension classification ledger:",
+    pressureRows.length
+      ? pressureRows.map((row) => [
+        `Claim: ${row.claim.id} ${row.claim.text}`,
+        `Tension type: ${tensionKind(row)}`,
+        `Evidence warning: ${evidenceWarning(row)}`,
+        `Current numbers: C ${Math.round(row.response.confidence)}, P ${Math.round(row.response.personalSubstantiation)}, gap ${Math.round(row.gap)}, dependency tension ${Math.round(row.tension)}, weight ${row.weight.toFixed(2)}`
+      ].join("\n")).join("\n\n")
+      : "- No rated claims yet.",
+    "",
     "Christian divine-action ledger:",
     actionRows.length
       ? actionRows.map((row) => `\n${bridgeLedgerLine(row)}`).join("\n")
@@ -426,7 +460,7 @@ function buildAiPrompt() {
     "",
     "Please respond in this format:",
     "1. A concise diagnosis of the profile.",
-    "2. The top three tensions, each tied to a specific claim.",
+    "2. The top three tensions, each tied to a specific claim and classified as substantiation gap, dependency leap, scope drift, specificity inflation, testimonial overreach, rival-explanation problem, or some combination.",
     "3. The bridge premise or differentiator that would most improve the profile, stated as a testable or independently defensible premise.",
     "4. Five Socratic questions I should answer before treating the strongest Christian conclusion as licensed.",
     "5. A repaired version of the profile that avoids overclaiming.",
@@ -524,18 +558,30 @@ function renderScatter() {
     const response = state.profile.responses[claim.id];
     return response && (response.confidence > 0 || response.personalSubstantiation > 0);
   });
+  const claimsByCategory = new Map(categories.map((category) => [
+    category,
+    state.claims.filter((claim) => claim.category === category).sort((a, b) => a.id.localeCompare(b.id))
+  ]));
 
   nodes.scatter.innerHTML = `
-    <div class="scatter-axis x-axis">Gradient position</div>
+    <div class="scatter-axis x-axis">Category lanes</div>
     <div class="scatter-axis y-axis">Confidence</div>
-    ${[1, 2, 3, 4, 5].map((x) => `<span class="x-tick" style="left:${((x - 1) / 4) * 100}%">${x}</span>`).join("")}
+    ${categories.map((category, index) => `
+      <span class="category-lane" style="left:${index * 20}%; width:20%"></span>
+      <span class="x-tick" style="left:${index * 20 + 10}%">${index + 1}</span>
+    `).join("")}
     ${[0, 25, 50, 75, 100].map((y) => `<span class="y-tick" style="bottom:${y}%">${y}</span>`).join("")}
     ${ratedClaims.map((claim) => {
       const response = responseFor(claim);
-      const x = ((claim.gradientPosition - 1) / 4) * 100;
+      const categoryIndex = categories.indexOf(claim.category);
+      const categoryClaims = claimsByCategory.get(claim.category) ?? [];
+      const itemIndex = Math.max(0, categoryClaims.findIndex((item) => item.id === claim.id));
+      const itemCount = Math.max(1, categoryClaims.length);
+      const laneLeft = categoryIndex * 20;
+      const x = laneLeft + 2 + ((itemIndex + 0.5) / itemCount) * 16;
       const y = response.confidence;
       const opacity = 0.3 + (response.personalSubstantiation / 100) * 0.7;
-      const size = 9 + claimWeight(response.confidence, response.personalSubstantiation) * 12;
+      const size = 7 + claimWeight(response.confidence, response.personalSubstantiation) * 9;
       return `<button class="point" style="left:${x}%; bottom:${y}%; opacity:${opacity}; width:${size}px; height:${size}px" title="${escapeHtml(`${claim.id}: ${claim.text}`)}"></button>`;
     }).join("")}
   `;
