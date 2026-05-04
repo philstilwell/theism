@@ -30,7 +30,11 @@ const nodes = {
   categoryBars: document.querySelector("#category-bars"),
   categoryFilter: document.querySelector("#category-filter"),
   claimList: document.querySelector("#claim-list"),
+  aiPrompt: document.querySelector("#ai-prompt"),
+  copyAiPrompt: document.querySelector("#copy-ai-prompt"),
+  copyReport: document.querySelector("#copy-report"),
   copySummary: document.querySelector("#copy-summary"),
+  finalReport: document.querySelector("#final-report"),
   gradientMarker: document.querySelector("#gradient-marker"),
   lensButtons: document.querySelector("#lens-buttons"),
   profileSummary: document.querySelector("#profile-summary"),
@@ -181,15 +185,36 @@ function setResponse(claimId, patch) {
   render();
 }
 
-function buildTextReport() {
+function ratedClaimRows() {
+  return state.claims
+    .map((claim) => {
+      const response = state.profile.responses[claim.id];
+      if (!response || (!response.confidence && !response.personalSubstantiation && !response.note)) return null;
+      const gap = substantiationGap(response.confidence, response.personalSubstantiation);
+      const tension = dependencyTension(claim, state.profile) ?? 0;
+      const weight = claimWeight(response.confidence, response.personalSubstantiation);
+      return { claim, response, gap, tension, weight };
+    })
+    .filter(Boolean);
+}
+
+function topLines(rows, sorter, formatter, emptyText = "- None yet.") {
+  const lines = [...rows]
+    .sort(sorter)
+    .slice(0, 8)
+    .filter((row) => formatter(row))
+    .map(formatter);
+
+  return lines.length ? lines.join("\n") : emptyText;
+}
+
+function buildFinalReport() {
   const aggregate = aggregateGradientPosition(state.claims, state.profile);
   const ewti = evidentiallyWeightedTheismIndex(state.claims, state.profile);
   const gap = averageSubstantiationGap(state.claims, state.profile);
   const alerts = buildDiagnostics(state.claims, state.profile);
-  const rated = Object.keys(state.profile.responses).filter((id) => {
-    const response = state.profile.responses[id];
-    return response.confidence > 0 || response.personalSubstantiation > 0 || response.note;
-  }).length;
+  const rows = ratedClaimRows();
+  const rated = rows.length;
 
   const categoryLines = categoryAverages(state.claims, state.profile)
     .map((item) => `- ${item.category}: C ${Math.round(item.confidence)}, P ${Math.round(item.personalSubstantiation)} (${item.count} rated)`)
@@ -199,8 +224,36 @@ function buildTextReport() {
     ? alerts.map((alert) => `- ${alert.message} ${alert.claim.text}`).join("\n")
     : "- No diagnostic alerts.";
 
+  const strongestLines = topLines(
+    rows,
+    (a, b) => b.weight - a.weight,
+    ({ claim, response, weight }) => `- ${claim.id} (${claim.category}): weight ${weight.toFixed(2)}, C ${Math.round(response.confidence)}, P ${Math.round(response.personalSubstantiation)} — ${claim.text}`
+  );
+
+  const gapLines = topLines(
+    rows,
+    (a, b) => b.gap - a.gap,
+    ({ claim, gap: rowGap, response }) => rowGap >= 15
+      ? `- ${claim.id}: gap ${Math.round(rowGap)} (C ${Math.round(response.confidence)}, P ${Math.round(response.personalSubstantiation)}) — ${claim.text}`
+      : null
+  );
+
+  const tensionLines = topLines(
+    rows,
+    (a, b) => b.tension - a.tension,
+    ({ claim, tension }) => tension >= 15
+      ? `- ${claim.id}: dependency tension ${Math.round(tension)} — ${claim.text}`
+      : null
+  );
+
+  const noteLines = rows
+    .filter(({ response }) => response.note)
+    .slice(0, 8)
+    .map(({ claim, response }) => `- ${claim.id}: ${response.note}`)
+    .join("\n") || "- No notes entered.";
+
   return [
-    "Theism Gradient Profile",
+    "Theism Gradient Final Report",
     "",
     profileSummary(state.claims, state.profile),
     "",
@@ -213,8 +266,40 @@ function buildTextReport() {
     categoryLines,
     "",
     "Diagnostic alerts:",
-    alertLines
+    alertLines,
+    "",
+    "Strongest weighted commitments:",
+    strongestLines,
+    "",
+    "Largest confidence/substantiation gaps:",
+    gapLines,
+    "",
+    "Largest dependency tensions:",
+    tensionLines,
+    "",
+    "User notes:",
+    noteLines
   ].join("\n");
+}
+
+function buildAiPrompt() {
+  return [
+    "Please analyze the following Theism Gradient profile.",
+    "",
+    "Tasks:",
+    "1. Summarize the user's current position on the deism-to-Christian-theism gradient.",
+    "2. Identify where confidence outruns personal substantiation.",
+    "3. Identify downstream Christian claims that appear to outrun bridge claims.",
+    "4. Recommend which claims should be investigated first and what evidence would be most relevant.",
+    "5. Distinguish weaker support, such as coincidence or testimonial clustering, from stronger support, such as independently checkable evidence, durable patterns, and clear rival-hypothesis comparison.",
+    "6. Keep the tone analytical and non-dismissive.",
+    "",
+    buildFinalReport()
+  ].join("\n");
+}
+
+function buildTextReport() {
+  return buildFinalReport();
 }
 
 async function copyText(value) {
@@ -232,6 +317,19 @@ async function copyText(value) {
   textArea.select();
   document.execCommand("copy");
   textArea.remove();
+}
+
+async function copyFromButton(button, value) {
+  const original = button.textContent;
+  try {
+    await copyText(value);
+    button.textContent = "Copied";
+  } catch {
+    button.textContent = "Copy failed";
+  }
+  window.setTimeout(() => {
+    button.textContent = original;
+  }, 1400);
 }
 
 function filterClaims() {
@@ -391,6 +489,11 @@ function renderFilters() {
   `).join("");
 }
 
+function renderExports() {
+  nodes.finalReport.value = buildFinalReport();
+  nodes.aiPrompt.value = buildAiPrompt();
+}
+
 function renderLensButtons() {
   nodes.lensButtons.innerHTML = profilePresets.map((preset) => `
     <button type="button" data-preset-id="${escapeHtml(preset.id)}" class="lens-button">
@@ -405,6 +508,7 @@ function render() {
   renderCategoryBars();
   renderScatter();
   renderAlerts();
+  renderExports();
   renderClaims();
 }
 
@@ -473,15 +577,15 @@ function bindEvents() {
   });
 
   nodes.copySummary.addEventListener("click", async () => {
-    try {
-      await copyText(buildTextReport());
-      nodes.copySummary.textContent = "Copied";
-    } catch {
-      nodes.copySummary.textContent = "Copy failed";
-    }
-    window.setTimeout(() => {
-      nodes.copySummary.textContent = "Copy Summary";
-    }, 1400);
+    await copyFromButton(nodes.copySummary, buildTextReport());
+  });
+
+  nodes.copyReport.addEventListener("click", async () => {
+    await copyFromButton(nodes.copyReport, nodes.finalReport.value);
+  });
+
+  nodes.copyAiPrompt.addEventListener("click", async () => {
+    await copyFromButton(nodes.copyAiPrompt, nodes.aiPrompt.value);
   });
 }
 

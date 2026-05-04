@@ -3,155 +3,110 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Theism Gradient</title>
+    <title>Theism Gradient Hub</title>
+    <meta
+      name="description"
+      content="A hub for compact apologetics reasoning apps, including Theism Gradient and Inductive Symmetry Audit."
+    >
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./src/styles.css">
   </head>
-  <body>
-    <main class="app-shell">
-      <section class="topbar" aria-labelledby="app-title">
-        <div>
-          <p class="eyebrow">Deism-to-Christian-theism assessment</p>
-          <h1 id="app-title">Theism Gradient</h1>
-        </div>
-        <div class="toolbar" aria-label="Assessment controls">
-          <button id="copy-summary" type="button" title="Copy a text summary of the current profile">Copy Summary</button>
-          <button id="seed-balanced" type="button" title="Load a sample middle profile">Sample</button>
-          <button id="reset" type="button" title="Clear all local responses">Reset</button>
-        </div>
-      </section>
+  <body class="hub-page">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Theism Gradient Hub home">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span>
+          <strong>Theism Gradient Hub</strong>
+          <small>Christian claims under evidential inspection</small>
+        </span>
+      </a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="./app.html">Theism Gradient</a>
+        <a href="https://xhairs.com/apps/inductive-symmetry-audit/">Inductive Symmetry Audit</a>
+      </nav>
+    </header>
 
-      <section class="summary-band" aria-label="Gradient summary">
-        <div class="gradient-track">
-          <div class="gradient-labels">
-            <span>Minimal deism</span>
-            <span>Design</span>
-            <span>Personal</span>
-            <span>Intervention</span>
-            <span>Christian endpoint</span>
+    <main class="hub-shell">
+      <section class="hub-layout" aria-labelledby="hub-title">
+        <div class="hub-copy">
+          <p class="eyebrow">GitHub Pages apps</p>
+          <h1 id="hub-title">Theism Gradient Hub</h1>
+          <p class="lede">
+            Compact reasoning tools for inspecting Christian apologetic claims, their evidential
+            standards, their bridge premises, and the gap between confidence and personal substantiation.
+          </p>
+          <div class="hub-actions">
+            <a class="button primary" href="./app.html">Open Theism Gradient</a>
+            <a class="button secondary" href="#apps">View app list</a>
           </div>
-          <div class="track-line">
-            <div id="gradient-marker" class="gradient-marker" style="left: 0%"></div>
+        </div>
+
+        <div class="logic-panel" aria-label="Theism gradient preview">
+          <div class="logic-row header">
+            <span>Claim layer</span>
+            <span>Question</span>
+            <span>Audit</span>
+          </div>
+          <div class="logic-row">
+            <span>Prayer</span>
+            <span>Answered beyond coincidence?</span>
+            <strong>Test</strong>
+          </div>
+          <div class="logic-row">
+            <span>Healing</span>
+            <span>Miraculous rather than ordinary?</span>
+            <strong>Compare</strong>
+          </div>
+          <div class="logic-row">
+            <span>Wisdom</span>
+            <span>Guidance beyond intuition?</span>
+            <strong>Substantiate</strong>
+          </div>
+          <div class="meter-strip" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
-        <div id="profile-summary" class="profile-summary"></div>
       </section>
 
-      <section class="metric-grid" aria-label="Assessment metrics">
-        <article>
-          <span>Aggregate position</span>
-          <strong id="aggregate-position">0.00</strong>
-        </article>
-        <article>
-          <span>Theism index</span>
-          <strong id="theism-index">0</strong>
-        </article>
-        <article>
-          <span>Average substantiation gap</span>
-          <strong id="avg-gap">0</strong>
-        </article>
-        <article>
-          <span>Claims rated</span>
-          <strong id="rated-count">0 / 50</strong>
-        </article>
-      </section>
-
-      <section class="method-panel" aria-labelledby="method-guide-title">
+      <section class="hub-section" id="apps" aria-labelledby="apps-title">
         <div class="section-heading">
           <div>
-            <h2 id="method-guide-title">Assessment Guide</h2>
-            <p>Use these notes to keep the ratings tied to substantiation rather than mere agreement.</p>
+            <p class="eyebrow">App list</p>
+            <h2 id="apps-title">Available audits</h2>
           </div>
-        </div>
-        <div class="guide-accordion">
-          <details>
-            <summary>How to read the gradient</summary>
-            <p>The left side tracks thin background claims about source, design, and personal agency. The right side tracks Christian divine-action claims such as prayer, healing, wisdom, foreknowledge, scripture, Jesus, Spirit, salvation, and transformation.</p>
-          </details>
-          <details>
-            <summary>Confidence versus personal substantiation</summary>
-            <p>Confidence asks whether the claim can be substantiated at all. Personal substantiation asks whether you can personally make that case. A high-confidence, low-substantiation answer is intentionally discounted by the geometric score.</p>
-          </details>
-          <details>
-            <summary>Dependency tension</summary>
-            <p>Downstream claims often depend on bridge claims. For example, a strong rating for miraculous healing carries pressure if the more basic claims about divine agency, prayer response, or distinguishable divine action are rated much lower.</p>
-          </details>
-          <details>
-            <summary>What counts as adequate support</summary>
-            <p>Good support can include public evidence, repeatable patterns, historical arguments, carefully assessed testimony, philosophical argument, or lived-experience data. The app does not decide which is sufficient; it shows where your own ratings become uneven.</p>
-          </details>
-        </div>
-      </section>
-
-      <section class="lens-panel" aria-labelledby="lens-title">
-        <div class="section-heading">
-          <div>
-            <h2 id="lens-title">Preset Lenses</h2>
-            <p>Apply a stance profile, then inspect where the scores and annotations put pressure on it.</p>
-          </div>
-        </div>
-        <div id="lens-buttons" class="lens-buttons"></div>
-      </section>
-
-      <section class="dashboard-grid">
-        <div class="panel plot-panel">
-          <div class="panel-heading">
-            <h2>Claim Scatter</h2>
-            <p>Confidence by gradient position; darker points indicate stronger personal substantiation.</p>
-          </div>
-          <div id="scatter-plot" class="scatter-plot" role="img" aria-label="Scatter plot of rated claims"></div>
         </div>
 
-        <div class="panel">
-          <div class="panel-heading">
-            <h2>Category Profile</h2>
-            <p>Average confidence and personal substantiation per gradient band.</p>
-          </div>
-          <div id="category-bars" class="category-bars"></div>
-        </div>
-      </section>
+        <div class="app-grid">
+          <article class="app-card">
+            <div>
+              <p class="card-kicker">This site</p>
+              <h3>Theism Gradient</h3>
+              <p>
+                Rates 50 Christianity-focused claims across a deism-to-Christian-theism gradient,
+                then surfaces substantiation gaps, dependency tensions, category profiles, and an
+                AI-ready report.
+              </p>
+            </div>
+            <a class="card-link" href="./app.html">Run assessment</a>
+          </article>
 
-      <section class="diagnostics-grid">
-        <div class="panel">
-          <div class="panel-heading">
-            <h2>Diagnostic Alerts</h2>
-            <p>Flags where confidence may be outrunning substantiation or prerequisite claims.</p>
-          </div>
-          <div id="alerts" class="alerts"></div>
+          <article class="app-card">
+            <div>
+              <p class="card-kicker">Xhairs app</p>
+              <h3>Inductive Symmetry Audit</h3>
+              <p>
+                Tests whether an apologetic argument accepts one inductive pattern while dismissing
+                relevantly similar patterns that pressure the preferred conclusion.
+              </p>
+            </div>
+            <a class="card-link" href="https://xhairs.com/apps/inductive-symmetry-audit/">Run audit</a>
+            <a class="card-link secondary-link" href="https://xhairs.com/apps/inductive-symmetry-audit/theory.html">Theory notes</a>
+          </article>
         </div>
-
-        <div class="panel">
-          <div class="panel-heading">
-            <h2>Filters</h2>
-            <p>Narrow the claim explorer without changing scores.</p>
-          </div>
-          <div class="filters">
-            <label>
-              <span>Category</span>
-              <select id="category-filter"></select>
-            </label>
-            <label>
-              <span>Tradition</span>
-              <select id="tradition-filter"></select>
-            </label>
-            <label>
-              <span>Search</span>
-              <input id="search-filter" type="search" placeholder="claim, tag, or id">
-            </label>
-          </div>
-        </div>
-      </section>
-
-      <section class="claim-section" aria-labelledby="claim-explorer-title">
-        <div class="section-heading">
-          <div>
-            <h2 id="claim-explorer-title">Claim Explorer</h2>
-            <p>Rate confidence and personal substantiation for each auditable claim.</p>
-          </div>
-        </div>
-        <div id="claim-list" class="claim-list"></div>
       </section>
     </main>
-
-    <script type="module" src="./src/app.js"></script>
   </body>
 </html>
