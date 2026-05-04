@@ -1,0 +1,811 @@
+[
+  {
+    "id": "C001",
+    "text": "The physical universe has some explanation beyond merely describing its internal events.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "cosmology",
+      "explanation"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C002",
+    "text": "The universe is not ultimately self-explanatory.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "cosmology",
+      "explanation"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C003",
+    "text": "The universe depends on something that is not identical to the universe.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "dependence",
+      "metaphysics"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C004",
+    "text": "The existence of physical reality is not a brute fact.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "brute-fact",
+      "metaphysics"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C005",
+    "text": "The beginning or finite past of the universe points to a cause beyond ordinary physical events.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "cosmology",
+      "causation"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C006",
+    "text": "The totality of physical reality requires an explanation not contained within that totality.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "totality",
+      "explanation"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C007",
+    "text": "The regularity of nature requires an explanation beyond simply naming physical laws.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "laws",
+      "regularity"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C008",
+    "text": "The initial conditions of the universe were not merely accidental or unexplained.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "initial-conditions",
+      "cosmology"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C009",
+    "text": "The existence of contingent things points to some non-contingent explanatory ground.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "contingency",
+      "metaphysics"
+    ],
+    "dependencyIds": []
+  },
+  {
+    "id": "C010",
+    "text": "A minimal creator or source of the universe exists, even if nothing else is known about it.",
+    "category": "Minimal Deism",
+    "gradientPosition": 1,
+    "specificityWeight": 1,
+    "tradition": "general",
+    "tags": [
+      "creator",
+      "source"
+    ],
+    "dependencyIds": [
+      "C001",
+      "C003",
+      "C006",
+      "C009"
+    ]
+  },
+  {
+    "id": "C011",
+    "text": "The universe was intentionally caused rather than accidentally caused.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "intention",
+      "causation"
+    ],
+    "dependencyIds": [
+      "C010"
+    ]
+  },
+  {
+    "id": "C012",
+    "text": "The universe was caused by something with goal-directed features.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "teleology",
+      "causation"
+    ],
+    "dependencyIds": [
+      "C010",
+      "C011"
+    ]
+  },
+  {
+    "id": "C013",
+    "text": "The structure of the universe is better explained by design than by chance, necessity, or unknown impersonal processes.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "design",
+      "explanation"
+    ],
+    "dependencyIds": [
+      "C011",
+      "C012"
+    ]
+  },
+  {
+    "id": "C014",
+    "text": "The apparent fine-tuning of physical constants is evidence of purposeful calibration.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "fine-tuning",
+      "design"
+    ],
+    "dependencyIds": [
+      "C011",
+      "C012",
+      "C013"
+    ]
+  },
+  {
+    "id": "C015",
+    "text": "The universe was created for the emergence of life.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "life",
+      "purpose"
+    ],
+    "dependencyIds": [
+      "C011",
+      "C012",
+      "C014"
+    ]
+  },
+  {
+    "id": "C016",
+    "text": "The universe was created for the emergence of conscious beings.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "consciousness",
+      "purpose"
+    ],
+    "dependencyIds": [
+      "C011",
+      "C012",
+      "C014",
+      "C015"
+    ]
+  },
+  {
+    "id": "C017",
+    "text": "The creator had some preference for order over chaos.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "order",
+      "preference"
+    ],
+    "dependencyIds": [
+      "C010",
+      "C011"
+    ]
+  },
+  {
+    "id": "C018",
+    "text": "The creator had some preference for life-permitting conditions over non-life-permitting conditions.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "life-permitting",
+      "preference"
+    ],
+    "dependencyIds": [
+      "C010",
+      "C011",
+      "C014"
+    ]
+  },
+  {
+    "id": "C019",
+    "text": "The creator is more like an intelligent agent than an impersonal force.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "agency",
+      "intelligence"
+    ],
+    "dependencyIds": [
+      "C011",
+      "C012",
+      "C017"
+    ]
+  },
+  {
+    "id": "C020",
+    "text": "The creator intentionally set the universe in motion but does not clearly intervene after creation.",
+    "category": "Design Deism",
+    "gradientPosition": 2,
+    "specificityWeight": 2,
+    "tradition": "general",
+    "tags": [
+      "deism",
+      "non-intervention"
+    ],
+    "dependencyIds": [
+      "C010",
+      "C011"
+    ]
+  },
+  {
+    "id": "C021",
+    "text": "The creator has something analogous to mind, intention, or awareness.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "mind",
+      "awareness"
+    ],
+    "dependencyIds": [
+      "C019"
+    ]
+  },
+  {
+    "id": "C022",
+    "text": "The creator is aware of the universe after creating it.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "awareness",
+      "creation"
+    ],
+    "dependencyIds": [
+      "C021"
+    ]
+  },
+  {
+    "id": "C023",
+    "text": "The creator is aware of conscious creatures within the universe.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "awareness",
+      "humans"
+    ],
+    "dependencyIds": [
+      "C021",
+      "C022"
+    ]
+  },
+  {
+    "id": "C024",
+    "text": "The creator is capable of choosing between alternative possible actions.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "choice",
+      "agency"
+    ],
+    "dependencyIds": [
+      "C021"
+    ]
+  },
+  {
+    "id": "C025",
+    "text": "The creator has purposes related to human beings.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "purpose",
+      "humans"
+    ],
+    "dependencyIds": [
+      "C021",
+      "C023",
+      "C024"
+    ]
+  },
+  {
+    "id": "C026",
+    "text": "The creator cares about whether humans understand reality accurately.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "truth",
+      "humans"
+    ],
+    "dependencyIds": [
+      "C023",
+      "C025"
+    ]
+  },
+  {
+    "id": "C027",
+    "text": "The creator can act within the universe after its initial creation.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "intervention-capacity",
+      "agency"
+    ],
+    "dependencyIds": [
+      "C021",
+      "C024"
+    ]
+  },
+  {
+    "id": "C028",
+    "text": "The creator can communicate information to human beings.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "communication",
+      "revelation-capacity"
+    ],
+    "dependencyIds": [
+      "C021",
+      "C023",
+      "C026"
+    ]
+  },
+  {
+    "id": "C029",
+    "text": "The creator can respond differently to different human actions, prayers, or requests.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "response",
+      "prayer-capacity"
+    ],
+    "dependencyIds": [
+      "C023",
+      "C024",
+      "C027"
+    ]
+  },
+  {
+    "id": "C030",
+    "text": "The creator is not merely the source of the universe but an ongoing personal agent.",
+    "category": "Personal Theism",
+    "gradientPosition": 3,
+    "specificityWeight": 3,
+    "tradition": "general",
+    "tags": [
+      "personal-theism",
+      "agency"
+    ],
+    "dependencyIds": [
+      "C021",
+      "C022",
+      "C024",
+      "C027"
+    ]
+  },
+  {
+    "id": "C031",
+    "text": "God has intervened in the physical world after the universe began.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "intervention",
+      "history"
+    ],
+    "dependencyIds": [
+      "C027",
+      "C030"
+    ]
+  },
+  {
+    "id": "C032",
+    "text": "God has performed detectable miracles.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "miracle",
+      "detection"
+    ],
+    "dependencyIds": [
+      "C027",
+      "C031"
+    ]
+  },
+  {
+    "id": "C033",
+    "text": "God has answered some prayers in ways that differ from chance or ordinary causation.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "prayer",
+      "intervention",
+      "causation"
+    ],
+    "dependencyIds": [
+      "C021",
+      "C022",
+      "C027",
+      "C029"
+    ]
+  },
+  {
+    "id": "C034",
+    "text": "God has healed some sick people through divine action rather than ordinary medical or biological processes.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "healing",
+      "miracle"
+    ],
+    "dependencyIds": [
+      "C027",
+      "C031",
+      "C032",
+      "C033"
+    ]
+  },
+  {
+    "id": "C035",
+    "text": "God has communicated specific messages to selected human beings.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "communication",
+      "revelation"
+    ],
+    "dependencyIds": [
+      "C028",
+      "C031"
+    ]
+  },
+  {
+    "id": "C036",
+    "text": "Some human religious experiences are caused by God rather than by ordinary psychological or social processes.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "religious-experience",
+      "causation"
+    ],
+    "dependencyIds": [
+      "C021",
+      "C023",
+      "C031"
+    ]
+  },
+  {
+    "id": "C037",
+    "text": "Some prophetic claims are genuinely caused by divine revelation.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "prophecy",
+      "revelation"
+    ],
+    "dependencyIds": [
+      "C028",
+      "C035"
+    ]
+  },
+  {
+    "id": "C038",
+    "text": "Some sacred texts contain information that came from God.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "scripture",
+      "revelation"
+    ],
+    "dependencyIds": [
+      "C028",
+      "C035",
+      "C037"
+    ]
+  },
+  {
+    "id": "C039",
+    "text": "God has intentionally guided human history toward specific outcomes.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "history",
+      "guidance"
+    ],
+    "dependencyIds": [
+      "C025",
+      "C027",
+      "C031"
+    ]
+  },
+  {
+    "id": "C040",
+    "text": "God has made enough evidence available for humans to identify at least one true revealed religion.",
+    "category": "Interventionist Theism",
+    "gradientPosition": 4,
+    "specificityWeight": 4,
+    "tradition": "general",
+    "tags": [
+      "religion",
+      "evidence",
+      "revelation"
+    ],
+    "dependencyIds": [
+      "C026",
+      "C035",
+      "C038"
+    ]
+  },
+  {
+    "id": "C041",
+    "text": "The God who exists is the God identified in the Hebrew Bible as YHWH.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Judaism",
+    "tags": [
+      "YHWH",
+      "Hebrew Bible"
+    ],
+    "dependencyIds": [
+      "C035",
+      "C038",
+      "C040"
+    ]
+  },
+  {
+    "id": "C042",
+    "text": "The covenantal claims made in the Torah reflect actual divine communication rather than merely human religious tradition.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Judaism",
+    "tags": [
+      "Torah",
+      "covenant"
+    ],
+    "dependencyIds": [
+      "C035",
+      "C038",
+      "C041"
+    ]
+  },
+  {
+    "id": "C043",
+    "text": "The Exodus and Sinai traditions preserve real divine action in Israel's history.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Judaism",
+    "tags": [
+      "Exodus",
+      "Sinai",
+      "history"
+    ],
+    "dependencyIds": [
+      "C031",
+      "C035",
+      "C039",
+      "C041"
+    ]
+  },
+  {
+    "id": "C044",
+    "text": "The prophetic literature of ancient Israel contains genuine messages from God.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Judaism",
+    "tags": [
+      "prophets",
+      "Hebrew Bible"
+    ],
+    "dependencyIds": [
+      "C037",
+      "C038",
+      "C041"
+    ]
+  },
+  {
+    "id": "C045",
+    "text": "Jesus of Nazareth was bodily resurrected after death.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "Jesus",
+      "resurrection",
+      "history"
+    ],
+    "dependencyIds": [
+      "C027",
+      "C031",
+      "C032",
+      "C035"
+    ]
+  },
+  {
+    "id": "C046",
+    "text": "Jesus was not merely a prophet or teacher but uniquely divine in the sense affirmed by historic Christianity.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "Jesus",
+      "divinity",
+      "Christology"
+    ],
+    "dependencyIds": [
+      "C035",
+      "C038",
+      "C045"
+    ]
+  },
+  {
+    "id": "C047",
+    "text": "The crucifixion of Jesus had a divinely intended salvific function.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "crucifixion",
+      "salvation"
+    ],
+    "dependencyIds": [
+      "C025",
+      "C035",
+      "C045",
+      "C046"
+    ]
+  },
+  {
+    "id": "C048",
+    "text": "The New Testament reliably preserves the central divine claims about Jesus.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "New Testament",
+      "Jesus",
+      "textual-reliability"
+    ],
+    "dependencyIds": [
+      "C038",
+      "C045",
+      "C046"
+    ]
+  },
+  {
+    "id": "C049",
+    "text": "The Qur'an is a revelation from God rather than a merely human religious text.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Islam",
+    "tags": [
+      "Quran",
+      "revelation"
+    ],
+    "dependencyIds": [
+      "C035",
+      "C038",
+      "C040"
+    ]
+  },
+  {
+    "id": "C050",
+    "text": "Muhammad was genuinely commissioned by God as a prophet.",
+    "category": "Specific Abrahamic Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Islam",
+    "tags": [
+      "Muhammad",
+      "prophecy"
+    ],
+    "dependencyIds": [
+      "C035",
+      "C037",
+      "C049"
+    ]
+  }
+]

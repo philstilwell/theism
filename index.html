@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Theism Gradient</title>
+    <link rel="stylesheet" href="/src/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar" aria-labelledby="app-title">
+        <div>
+          <p class="eyebrow">Deism-to-theism assessment</p>
+          <h1 id="app-title">Theism Gradient</h1>
+        </div>
+        <div class="toolbar" aria-label="Assessment controls">
+          <button id="seed-balanced" type="button" title="Load a sample middle profile">Sample</button>
+          <button id="reset" type="button" title="Clear all local responses">Reset</button>
+        </div>
+      </section>
+
+      <section class="summary-band" aria-label="Gradient summary">
+        <div class="gradient-track">
+          <div class="gradient-labels">
+            <span>Minimal deism</span>
+            <span>Design</span>
+            <span>Personal</span>
+            <span>Intervention</span>
+            <span>Specific tradition</span>
+          </div>
+          <div class="track-line">
+            <div id="gradient-marker" class="gradient-marker" style="left: 0%"></div>
+          </div>
+        </div>
+        <div id="profile-summary" class="profile-summary"></div>
+      </section>
+
+      <section class="metric-grid" aria-label="Assessment metrics">
+        <article>
+          <span>Aggregate position</span>
+          <strong id="aggregate-position">0.00</strong>
+        </article>
+        <article>
+          <span>Theism index</span>
+          <strong id="theism-index">0</strong>
+        </article>
+        <article>
+          <span>Average substantiation gap</span>
+          <strong id="avg-gap">0</strong>
+        </article>
+        <article>
+          <span>Claims rated</span>
+          <strong id="rated-count">0 / 50</strong>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="panel plot-panel">
+          <div class="panel-heading">
+            <h2>Claim Scatter</h2>
+            <p>Confidence by gradient position; darker points indicate stronger personal substantiation.</p>
+          </div>
+          <div id="scatter-plot" class="scatter-plot" role="img" aria-label="Scatter plot of rated claims"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h2>Category Profile</h2>
+            <p>Average confidence and personal substantiation per gradient band.</p>
+          </div>
+          <div id="category-bars" class="category-bars"></div>
+        </div>
+      </section>
+
+      <section class="diagnostics-grid">
+        <div class="panel">
+          <div class="panel-heading">
+            <h2>Diagnostic Alerts</h2>
+            <p>Flags where confidence may be outrunning substantiation or prerequisite claims.</p>
+          </div>
+          <div id="alerts" class="alerts"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h2>Filters</h2>
+            <p>Narrow the claim explorer without changing scores.</p>
+          </div>
+          <div class="filters">
+            <label>
+              <span>Category</span>
+              <select id="category-filter"></select>
+            </label>
+            <label>
+              <span>Tradition</span>
+              <select id="tradition-filter"></select>
+            </label>
+            <label>
+              <span>Search</span>
+              <input id="search-filter" type="search" placeholder="claim, tag, or id">
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="claim-section" aria-labelledby="claim-explorer-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="claim-explorer-title">Claim Explorer</h2>
+            <p>Rate confidence and personal substantiation for each auditable claim.</p>
+          </div>
+        </div>
+        <div id="claim-list" class="claim-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
