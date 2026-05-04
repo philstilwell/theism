@@ -274,7 +274,7 @@ function bindEvents() {
 }
 
 async function init() {
-  const response = await fetch("/public/claims.json");
+  const response = await fetch("./public/claims.json");
   state.claims = await response.json();
   loadProfile();
   renderFilters();
