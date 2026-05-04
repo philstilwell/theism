@@ -30,7 +30,9 @@ const nodes = {
   categoryBars: document.querySelector("#category-bars"),
   categoryFilter: document.querySelector("#category-filter"),
   claimList: document.querySelector("#claim-list"),
+  copySummary: document.querySelector("#copy-summary"),
   gradientMarker: document.querySelector("#gradient-marker"),
+  lensButtons: document.querySelector("#lens-buttons"),
   profileSummary: document.querySelector("#profile-summary"),
   ratedCount: document.querySelector("#rated-count"),
   reset: document.querySelector("#reset"),
@@ -40,6 +42,96 @@ const nodes = {
   theismIndex: document.querySelector("#theism-index"),
   traditionFilter: document.querySelector("#tradition-filter")
 };
+
+const profilePresets = [
+  {
+    id: "methodical-skeptic",
+    label: "Methodical Skeptic",
+    description: "Low-to-moderate ratings unless the claim can be personally defended with clear evidence.",
+    confidence: [35, 28, 22, 12, 8],
+    personal: [30, 24, 18, 10, 6],
+    boosts: {}
+  },
+  {
+    id: "minimal-deist",
+    label: "Minimal Deist",
+    description: "Strongest on source and explanation claims, cautious about personal and Christian divine-action claims.",
+    confidence: [78, 55, 28, 12, 8],
+    personal: [66, 42, 20, 8, 5],
+    boosts: {}
+  },
+  {
+    id: "cautious-christian",
+    label: "Cautious Christian",
+    description: "Moderate Christian confidence, with personal substantiation lagging on thicker claims.",
+    confidence: [62, 58, 55, 44, 40],
+    personal: [50, 46, 42, 30, 26],
+    boosts: { scripture: 5, jesus: 5, prayer: 4 }
+  },
+  {
+    id: "experiential-christian",
+    label: "Experiential Christian",
+    description: "Higher ratings for prayer, healing, guidance, spiritual gifts, and transformation.",
+    confidence: [52, 54, 66, 72, 66],
+    personal: [42, 44, 58, 64, 56],
+    boosts: { prayer: 8, healing: 8, wisdom: 7, guidance: 7, prophecy: 6, "holy spirit": 7, transformation: 8, "spiritual gifts": 8 }
+  },
+  {
+    id: "doctrinal-christian",
+    label: "Doctrinal Christian",
+    description: "Highest on Christian revelation, Jesus, scripture, Spirit, and salvation, with moderate action claims.",
+    confidence: [55, 54, 62, 58, 78],
+    personal: [40, 40, 50, 44, 64],
+    boosts: { scripture: 8, jesus: 8, revelation: 6, "holy spirit": 6, salvation: 8 }
+  }
+];
+
+const categoryAnnotations = {
+  "Minimal Deism": "This claim tests whether the universe needs an explanation beyond simply describing what happens inside it.",
+  "Design Deism": "This claim tests whether the source of reality is plausibly purposive, ordering, or life-directed rather than merely impersonal.",
+  "Personal Theism": "This claim tests whether the source can reasonably be treated as aware, intentional, communicative, or responsive.",
+  "Interventionist Theism": "This claim tests a general Christian divine-action commitment: whether God acts, guides, heals, warns, responds, or transforms within ordinary human life.",
+  "Specific Christian Theism": "This claim tests a thicker Christian commitment about revelation, Jesus, scripture, Spirit, salvation, worship, or Christian transformation."
+};
+
+function evidenceFocusFor(claim) {
+  const tags = claim.tags.map((tag) => tag.toLowerCase()).join(" ");
+  if (tags.includes("prayer")) return "Look for cases where prayer is not merely followed by a desired event, but where timing, pattern, specificity, controls, and alternatives have been weighed.";
+  if (tags.includes("healing") || tags.includes("health")) return "Look for medical detail, baseline condition, timing, independent confirmation, alternative explanations, and whether the reported healing is durable.";
+  if (tags.includes("foreknowledge") || tags.includes("prophecy") || tags.includes("future")) return "Look for specificity, prior documentation, timing, falsifiability, and whether the claim avoids vague fit-after-the-fact interpretation.";
+  if (tags.includes("wisdom") || tags.includes("discernment") || tags.includes("guidance")) return "Look for a track record of better judgment, morally serious outcomes, and reasons to distinguish the guidance from intuition, bias, or social reinforcement.";
+  if (tags.includes("dreams") || tags.includes("visions") || tags.includes("religious experience")) return "Look for content, timing, verifiability, psychological alternatives, and whether the experience carries information not otherwise available.";
+  if (tags.includes("scripture")) return "Look for arguments about reliability, coherence, transmission, interpretive restraint, and whether scripture is doing more work than the evidence supports.";
+  if (tags.includes("jesus") || tags.includes("resurrection")) return "Look for historical argument, explanatory comparison, source quality, and whether the conclusion depends on prior miracle and revelation claims.";
+  if (tags.includes("holy spirit") || tags.includes("spiritual gifts")) return "Look for observable effects, consistency with Christian moral aims, safeguards against suggestion, and whether claimed gifts can be responsibly tested.";
+  if (tags.includes("transformation") || tags.includes("sanctification")) return "Look for durable character change, costs paid, corroboration by others, and whether ordinary therapeutic or social explanations have been considered.";
+  if (tags.includes("evidence")) return "Look for criteria that would distinguish divine action from coincidence, suggestion, social reinforcement, or selective memory.";
+  return "Look for the strongest argument you could personally explain, the main alternative explanations, and what evidence would lower your confidence.";
+}
+
+function currentReadFor(response, gap, tension) {
+  const confidence = Number(response.confidence) || 0;
+  const substantiation = Number(response.personalSubstantiation) || 0;
+  if (!confidence && !substantiation) return "Not rated yet. Start low if you only find the claim plausible but cannot yet substantiate it.";
+  if (gap >= 35) return "Your confidence is running well ahead of personal substantiation here; this is a good candidate for a note or a lower confidence score.";
+  if (tension >= 25) return "This claim is currently outrunning its prerequisite bridge claims. Revisit the dependencies before treating it as strongly supported.";
+  if (confidence >= 70 && substantiation >= 70) return "You are rating this as both credible and personally defensible.";
+  if (confidence >= 60) return "You see some case for the claim, but the personal-substantiation score determines how much it should move the profile.";
+  return "This is currently a weak or tentative commitment in your profile.";
+}
+
+function dependencyAnnotationFor(claim) {
+  if (!claim.dependencyIds.length) {
+    return "This is an entry-level claim in the gradient and does not depend on earlier app claims.";
+  }
+
+  const labels = claim.dependencyIds
+    .map((id) => state.claims.find((candidate) => candidate.id === id))
+    .filter(Boolean)
+    .map((dependency) => `${dependency.id}: ${dependency.text}`);
+
+  return `Bridge claims to check first: ${labels.join(" | ")}`;
+}
 
 function loadProfile() {
   try {
@@ -71,11 +163,75 @@ function responseFor(claim) {
   return state.profile.responses[claim.id] ?? { confidence: 0, personalSubstantiation: 0, note: "" };
 }
 
+function clampPresetScore(value) {
+  return Math.max(0, Math.min(100, Math.round(value)));
+}
+
+function presetBoostFor(claim, preset) {
+  const tags = claim.tags.map((tag) => tag.toLowerCase());
+  return Object.entries(preset.boosts).reduce((sum, [needle, boost]) => {
+    return tags.some((tag) => tag.includes(needle)) ? sum + boost : sum;
+  }, 0);
+}
+
 function setResponse(claimId, patch) {
   const current = state.profile.responses[claimId] ?? { confidence: 0, personalSubstantiation: 0, note: "" };
   state.profile.responses[claimId] = { ...current, ...patch };
   saveProfile();
   render();
+}
+
+function buildTextReport() {
+  const aggregate = aggregateGradientPosition(state.claims, state.profile);
+  const ewti = evidentiallyWeightedTheismIndex(state.claims, state.profile);
+  const gap = averageSubstantiationGap(state.claims, state.profile);
+  const alerts = buildDiagnostics(state.claims, state.profile);
+  const rated = Object.keys(state.profile.responses).filter((id) => {
+    const response = state.profile.responses[id];
+    return response.confidence > 0 || response.personalSubstantiation > 0 || response.note;
+  }).length;
+
+  const categoryLines = categoryAverages(state.claims, state.profile)
+    .map((item) => `- ${item.category}: C ${Math.round(item.confidence)}, P ${Math.round(item.personalSubstantiation)} (${item.count} rated)`)
+    .join("\n");
+
+  const alertLines = alerts.length
+    ? alerts.map((alert) => `- ${alert.message} ${alert.claim.text}`).join("\n")
+    : "- No diagnostic alerts.";
+
+  return [
+    "Theism Gradient Profile",
+    "",
+    profileSummary(state.claims, state.profile),
+    "",
+    `Aggregate position: ${aggregate ? aggregate.toFixed(2) : "0.00"}`,
+    `Evidentially weighted theism index: ${ewti ? Math.round(ewti) : 0}`,
+    `Average substantiation gap: ${gap ? Math.round(gap) : 0}`,
+    `Claims rated: ${rated} / ${state.claims.length}`,
+    "",
+    "Category profile:",
+    categoryLines,
+    "",
+    "Diagnostic alerts:",
+    alertLines
+  ].join("\n");
+}
+
+async function copyText(value) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+
+  const textArea = document.createElement("textarea");
+  textArea.value = value;
+  textArea.setAttribute("readonly", "");
+  textArea.style.position = "fixed";
+  textArea.style.opacity = "0";
+  document.body.append(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  textArea.remove();
 }
 
 function filterClaims() {
@@ -182,6 +338,27 @@ function renderClaims() {
           </div>
           <p>${escapeHtml(claim.text)}</p>
           <div class="tags">${tags}</div>
+          <details class="annotation">
+            <summary>Annotation</summary>
+            <div class="annotation-body">
+              <section>
+                <strong>What this tests</strong>
+                <p>${escapeHtml(categoryAnnotations[claim.category] ?? "This claim tests a distinct commitment in the gradient.")}</p>
+              </section>
+              <section>
+                <strong>Substantiation focus</strong>
+                <p>${escapeHtml(evidenceFocusFor(claim))}</p>
+              </section>
+              <section>
+                <strong>Bridge pressure</strong>
+                <p>${escapeHtml(dependencyAnnotationFor(claim))}</p>
+              </section>
+              <section>
+                <strong>Current read</strong>
+                <p>${escapeHtml(currentReadFor(response, gap, tension))}</p>
+              </section>
+            </div>
+          </details>
         </div>
         <div class="claim-controls">
           <label>
@@ -214,6 +391,15 @@ function renderFilters() {
   `).join("");
 }
 
+function renderLensButtons() {
+  nodes.lensButtons.innerHTML = profilePresets.map((preset) => `
+    <button type="button" data-preset-id="${escapeHtml(preset.id)}" class="lens-button">
+      <strong>${escapeHtml(preset.label)}</strong>
+      <span>${escapeHtml(preset.description)}</span>
+    </button>
+  `).join("");
+}
+
 function render() {
   renderMetrics();
   renderCategoryBars();
@@ -222,19 +408,26 @@ function render() {
   renderClaims();
 }
 
-function seedSample() {
+function applyPreset(presetId) {
+  const preset = profilePresets.find((item) => item.id === presetId);
+  if (!preset) return;
+
   const responses = {};
   for (const claim of state.claims) {
-    const base = 78 - (claim.gradientPosition - 1) * 13;
-    const traditionPenalty = claim.tradition === "general" ? 0 : 8;
+    const index = claim.gradientPosition - 1;
+    const boost = presetBoostFor(claim, preset);
     responses[claim.id] = {
-      confidence: Math.max(10, base - traditionPenalty + (claim.id.endsWith("5") ? 8 : 0)),
-      personalSubstantiation: Math.max(8, base - 18 - traditionPenalty),
+      confidence: clampPresetScore(preset.confidence[index] + boost),
+      personalSubstantiation: clampPresetScore(preset.personal[index] + boost * 0.65),
       note: ""
     };
   }
+
   state.profile = { userId: "local", responses };
   saveProfile();
+  document.querySelectorAll(".lens-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.presetId === preset.id);
+  });
   render();
 }
 
@@ -267,10 +460,29 @@ function bindEvents() {
   nodes.reset.addEventListener("click", () => {
     state.profile = { userId: "local", responses: {} };
     saveProfile();
+    document.querySelectorAll(".lens-button").forEach((button) => button.classList.remove("active"));
     render();
   });
 
-  nodes.sample.addEventListener("click", seedSample);
+  nodes.sample.addEventListener("click", () => applyPreset("cautious-christian"));
+
+  nodes.lensButtons.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-preset-id]");
+    if (!button) return;
+    applyPreset(button.dataset.presetId);
+  });
+
+  nodes.copySummary.addEventListener("click", async () => {
+    try {
+      await copyText(buildTextReport());
+      nodes.copySummary.textContent = "Copied";
+    } catch {
+      nodes.copySummary.textContent = "Copy failed";
+    }
+    window.setTimeout(() => {
+      nodes.copySummary.textContent = "Copy Summary";
+    }, 1400);
+  });
 }
 
 async function init() {
@@ -278,6 +490,7 @@ async function init() {
   state.claims = await response.json();
   loadProfile();
   renderFilters();
+  renderLensButtons();
   bindEvents();
   render();
 }

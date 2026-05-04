@@ -14,6 +14,7 @@
           <h1 id="app-title">Theism Gradient</h1>
         </div>
         <div class="toolbar" aria-label="Assessment controls">
+          <button id="copy-summary" type="button" title="Copy a text summary of the current profile">Copy Summary</button>
           <button id="seed-balanced" type="button" title="Load a sample middle profile">Sample</button>
           <button id="reset" type="button" title="Clear all local responses">Reset</button>
         </div>
@@ -52,6 +53,43 @@
           <span>Claims rated</span>
           <strong id="rated-count">0 / 50</strong>
         </article>
+      </section>
+
+      <section class="method-panel" aria-labelledby="method-guide-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="method-guide-title">Assessment Guide</h2>
+            <p>Use these notes to keep the ratings tied to substantiation rather than mere agreement.</p>
+          </div>
+        </div>
+        <div class="guide-accordion">
+          <details>
+            <summary>How to read the gradient</summary>
+            <p>The left side tracks thin background claims about source, design, and personal agency. The right side tracks Christian divine-action claims such as prayer, healing, wisdom, foreknowledge, scripture, Jesus, Spirit, salvation, and transformation.</p>
+          </details>
+          <details>
+            <summary>Confidence versus personal substantiation</summary>
+            <p>Confidence asks whether the claim can be substantiated at all. Personal substantiation asks whether you can personally make that case. A high-confidence, low-substantiation answer is intentionally discounted by the geometric score.</p>
+          </details>
+          <details>
+            <summary>Dependency tension</summary>
+            <p>Downstream claims often depend on bridge claims. For example, a strong rating for miraculous healing carries pressure if the more basic claims about divine agency, prayer response, or distinguishable divine action are rated much lower.</p>
+          </details>
+          <details>
+            <summary>What counts as adequate support</summary>
+            <p>Good support can include public evidence, repeatable patterns, historical arguments, carefully assessed testimony, philosophical argument, or lived-experience data. The app does not decide which is sufficient; it shows where your own ratings become uneven.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="lens-panel" aria-labelledby="lens-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="lens-title">Preset Lenses</h2>
+            <p>Apply a stance profile, then inspect where the scores and annotations put pressure on it.</p>
+          </div>
+        </div>
+        <div id="lens-buttons" class="lens-buttons"></div>
       </section>
 
       <section class="dashboard-grid">
