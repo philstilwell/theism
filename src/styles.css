@@ -89,6 +89,12 @@ button:hover {
   border-color: var(--olive);
 }
 
+.toolbar .nav-button:first-child {
+  border-color: #111;
+  background: #111;
+  color: #fff;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -417,7 +423,8 @@ h2 {
 
 .metric-grid,
 .dashboard-grid,
-.diagnostics-grid {
+.diagnostics-grid,
+.analysis-grid {
   display: grid;
   gap: 16px;
   margin-top: 18px;
@@ -450,6 +457,13 @@ h2 {
   font-size: clamp(1.5rem, 4vw, 2.4rem);
 }
 
+.metric-grid p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.35;
+}
+
 .dashboard-grid {
   grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
   position: sticky;
@@ -463,6 +477,10 @@ h2 {
 
 .diagnostics-grid {
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.56fr);
+}
+
+.analysis-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
 }
 
 .panel {
@@ -494,6 +512,26 @@ h2 {
     linear-gradient(to top, rgba(23, 32, 29, 0.06) 1px, transparent 1px),
     linear-gradient(to right, rgba(23, 32, 29, 0.04) 1px, transparent 1px);
   background-size: 100% 25%, 20% 100%;
+}
+
+.scatter-legend {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  margin-left: 36px;
+}
+
+.scatter-legend button {
+  min-height: 30px;
+  padding: 4px 6px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 0.68rem;
+}
+
+.scatter-legend strong {
+  margin-right: 4px;
+  color: var(--ink);
 }
 
 .scatter-axis,
@@ -562,6 +600,17 @@ h2 {
   gap: 8px;
 }
 
+.category-row {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+}
+
 .category-row-heading,
 .bar-values,
 .claim-meta,
@@ -605,10 +654,14 @@ h2 {
 .alert {
   display: grid;
   gap: 4px;
+  width: 100%;
+  min-height: 0;
   padding: 12px;
   border: 1px solid var(--line);
   border-left: 4px solid var(--gold);
   border-radius: 6px;
+  background: #fff;
+  text-align: left;
 }
 
 .alert.high {
@@ -648,8 +701,67 @@ textarea {
   background: #fff;
 }
 
+.filter-note,
+.filter-count {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.filter-count {
+  white-space: nowrap;
+}
+
 .claim-section {
   margin-top: 22px;
+}
+
+.guided-panel {
+  margin-top: 18px;
+}
+
+.guided-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.category-progress {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.progress-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 8px;
+  align-items: center;
+  min-height: 56px;
+  padding: 10px;
+  text-align: left;
+}
+
+.progress-row span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.progress-row i {
+  grid-column: 1 / -1;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(102, 117, 44, 0.16);
+}
+
+.progress-row b {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green);
 }
 
 .method-panel {
@@ -691,6 +803,13 @@ textarea {
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.35;
+}
+
+.lens-button small {
+  align-self: end;
+  color: var(--green);
+  font-size: 0.68rem;
+  font-weight: 800;
 }
 
 .guide-accordion {
@@ -797,6 +916,55 @@ textarea {
   text-transform: uppercase;
 }
 
+.evidence-checklist {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.dependency-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dependency-chip {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  gap: 6px;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: #fff;
+  font-size: 0.72rem;
+}
+
+.dependency-chip.unrated {
+  color: var(--muted);
+  background: #f4f4ee;
+}
+
+.dependency-chip.low {
+  border-color: rgba(165, 83, 63, 0.45);
+  background: rgba(165, 83, 63, 0.08);
+}
+
+.dependency-chip.ok {
+  border-color: rgba(102, 117, 44, 0.5);
+  background: rgba(102, 117, 44, 0.1);
+}
+
+.dependency-empty {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
 .claim-controls {
   display: grid;
   gap: 10px;
@@ -815,6 +983,19 @@ textarea {
   gap: 8px;
 }
 
+.claim-controls label span strong {
+  font-weight: 900;
+}
+
+.scale-anchors {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.25;
+}
+
 input[type="range"] {
   width: 100%;
   accent-color: var(--green);
@@ -829,6 +1010,79 @@ textarea {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin-top: 18px;
+}
+
+.report-mode {
+  display: grid;
+  gap: 4px;
+  min-width: 180px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.dependency-map,
+.preset-comparison {
+  display: grid;
+  gap: 10px;
+}
+
+.dependency-row,
+.preset-row {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.dependency-target {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+}
+
+.dependency-target strong {
+  color: var(--green);
+}
+
+.dependency-target span,
+.dependency-target small,
+.preset-row span,
+.preset-row small {
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.preset-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.preset-row > div {
+  display: grid;
+  gap: 4px;
+}
+
+.preset-row > div:last-child {
+  justify-items: end;
+}
+
+.claim-focus {
+  outline: 3px solid rgba(102, 117, 44, 0.55);
+  outline-offset: 3px;
+}
+
+.empty-claims {
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
 }
 
 .export-box {
@@ -851,8 +1105,10 @@ textarea {
   .dashboard-grid,
   .diagnostics-grid,
   .report-grid,
+  .analysis-grid,
   .guide-accordion,
   .lens-buttons,
+  .category-progress,
   .hub-layout,
   .app-grid,
   .claim {
@@ -895,5 +1151,22 @@ textarea {
   .site-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .scatter-legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guided-actions,
+  .toolbar {
+    justify-content: flex-start;
+  }
+
+  .preset-row {
+    grid-template-columns: 1fr;
+  }
+
+  .preset-row > div:last-child {
+    justify-items: start;
   }
 }

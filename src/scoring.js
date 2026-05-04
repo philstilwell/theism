@@ -136,7 +136,9 @@ export function profileSummary(claims, profile) {
   const aggregate = aggregateGradientPosition(claims, profile);
   const ewti = evidentiallyWeightedTheismIndex(claims, profile);
   const gap = averageSubstantiationGap(claims, profile);
-  const rated = Object.keys(profile.responses).length;
+  const rated = Object.values(profile.responses)
+    .filter((response) => response.confidence > 0 || response.personalSubstantiation > 0 || response.note)
+    .length;
 
   if (!rated) {
     return "No claims have been rated yet. Start with the claims that feel most central, then use the diagnostics to find unsupported leaps.";

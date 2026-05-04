@@ -20,8 +20,11 @@
         </div>
         <div class="toolbar" aria-label="Assessment controls">
           <a class="nav-button" href="./">Hub</a>
+          <a class="nav-button" href="#claim-explorer-title">Start Claims</a>
+          <a class="nav-button" href="#dashboard-title">Dashboard</a>
+          <a class="nav-button" href="#report-title">Report</a>
           <button id="copy-summary" type="button" title="Copy a text summary of the current profile">Copy Summary</button>
-          <button id="seed-balanced" type="button" title="Load a sample middle profile">Sample</button>
+          <button id="seed-balanced" type="button" title="Load the Cautious Christian sample profile">Load Sample</button>
           <button id="reset" type="button" title="Clear all local responses">Reset</button>
         </div>
       </section>
@@ -46,19 +49,40 @@
         <article>
           <span>Aggregate position</span>
           <strong id="aggregate-position">0.00</strong>
+          <p>Weighted 1-5 location across the deism-to-Christian-theism gradient.</p>
         </article>
         <article>
           <span>Theism index</span>
           <strong id="theism-index">0</strong>
+          <p>How much rightward commitment is carried by claims you rate as both credible and personally substantiated.</p>
         </article>
         <article>
           <span>Average substantiation gap</span>
           <strong id="avg-gap">0</strong>
+          <p>Average amount by which Confidence outruns Personal Substantiation.</p>
         </article>
         <article>
           <span>Claims rated</span>
           <strong id="rated-count">0 / 50</strong>
+          <p>Your progress through the full claim set.</p>
         </article>
+      </section>
+
+      <section class="guided-panel panel" aria-labelledby="guided-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="guided-title">Guided Assessment</h2>
+            <p>Work through the 50 claims, revisit skipped items, and export a profile before major changes.</p>
+          </div>
+          <div class="guided-actions">
+            <button id="next-unrated" type="button">Next Unrated</button>
+            <button id="review-pressure" type="button">Review Pressure</button>
+            <button id="export-profile" type="button">Export Profile</button>
+            <button id="import-profile" type="button">Import Profile</button>
+            <input id="import-profile-file" type="file" accept="application/json,.json" hidden>
+          </div>
+        </div>
+        <div id="category-progress" class="category-progress" aria-label="Category progress"></div>
       </section>
 
       <section class="method-panel" aria-labelledby="method-guide-title">
@@ -101,10 +125,11 @@
       <section class="dashboard-grid">
         <div class="panel plot-panel">
           <div class="panel-heading">
-            <h2>Claim Scatter</h2>
+            <h2 id="dashboard-title">Claim Scatter</h2>
             <p>Confidence within category lanes; darker points indicate stronger personal substantiation.</p>
           </div>
           <div id="scatter-plot" class="scatter-plot" role="img" aria-label="Scatter plot of rated claims"></div>
+          <div id="scatter-legend" class="scatter-legend" aria-label="Scatter category legend"></div>
         </div>
 
         <div class="panel">
@@ -132,26 +157,72 @@
           </div>
           <div class="filters">
             <label>
-              <span>Category</span>
-              <select id="category-filter"></select>
+              <span>View</span>
+              <select id="mode-filter"></select>
             </label>
             <label>
-              <span>Tradition</span>
-              <select id="tradition-filter"></select>
+              <span>Category</span>
+              <select id="category-filter"></select>
             </label>
             <label>
               <span>Search</span>
               <input id="search-filter" type="search" placeholder="claim, tag, or id">
             </label>
+            <p id="filter-note" class="filter-note">Only items from the list of 50 claims that match the selected view, category, and search text will be displayed below.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="claim-section" aria-labelledby="claim-explorer-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="claim-explorer-title">Claim Explorer</h2>
+            <p>Rate Confidence and Personal Substantiation for each auditable claim. Filtered views below never change your saved scores.</p>
+          </div>
+          <span id="filter-count" class="filter-count"></span>
+        </div>
+        <div id="claim-list" class="claim-list"></div>
+      </section>
+
+      <section class="analysis-grid" aria-label="Profile analysis">
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Dependency Map</h2>
+              <p>Shows downstream claims alongside the bridge claims they currently depend on.</p>
+            </div>
+          </div>
+          <div id="dependency-map" class="dependency-map"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Preset Comparison</h2>
+              <p>Compare your current profile against the built-in lenses without changing your ratings.</p>
+            </div>
+          </div>
+          <div id="preset-comparison" class="preset-comparison"></div>
         </div>
       </section>
 
       <section class="report-grid" aria-labelledby="report-title">
         <div class="panel">
           <div class="panel-heading">
-            <h2 id="report-title">Final Report</h2>
-            <p>A compact export of the current profile, diagnostics, and highest-pressure claims.</p>
+            <div>
+              <h2 id="report-title">Final Report</h2>
+              <p>A configurable export of the current profile, diagnostics, and highest-pressure claims.</p>
+            </div>
+            <label class="report-mode">
+              <span>Mode</span>
+              <select id="report-mode">
+                <option value="brief">Brief</option>
+                <option value="full" selected>Full</option>
+                <option value="skeptical">Skeptical audit</option>
+                <option value="pastoral">Pastoral reflection</option>
+                <option value="ai">AI prompt only</option>
+              </select>
+            </label>
           </div>
           <textarea id="final-report" class="export-box" rows="10" readonly></textarea>
           <button id="copy-report" type="button">Copy Report</button>
@@ -165,16 +236,6 @@
           <textarea id="ai-prompt" class="export-box" rows="10" readonly></textarea>
           <button id="copy-ai-prompt" type="button">Copy AI Prompt</button>
         </div>
-      </section>
-
-      <section class="claim-section" aria-labelledby="claim-explorer-title">
-        <div class="section-heading">
-          <div>
-            <h2 id="claim-explorer-title">Claim Explorer</h2>
-            <p>Rate confidence and personal substantiation for each auditable claim.</p>
-          </div>
-        </div>
-        <div id="claim-list" class="claim-list"></div>
       </section>
     </main>
 

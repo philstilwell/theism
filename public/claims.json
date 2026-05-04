@@ -4,8 +4,6 @@
     "text": "The physical universe has some explanation beyond merely describing its internal events.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "cosmology",
       "explanation"
@@ -17,8 +15,6 @@
     "text": "The universe is not ultimately self-explanatory.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "cosmology",
       "explanation"
@@ -30,8 +26,6 @@
     "text": "The universe depends on something that is not identical to the universe.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "dependence",
       "metaphysics"
@@ -43,8 +37,6 @@
     "text": "The existence of physical reality is not a brute fact.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "brute-fact",
       "metaphysics"
@@ -56,8 +48,6 @@
     "text": "The beginning or finite past of the universe points to a cause beyond ordinary physical events.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "cosmology",
       "causation"
@@ -69,8 +59,6 @@
     "text": "The totality of physical reality requires an explanation not contained within that totality.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "totality",
       "explanation"
@@ -82,8 +70,6 @@
     "text": "The regularity of nature requires an explanation beyond simply naming physical laws.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "laws",
       "regularity"
@@ -95,8 +81,6 @@
     "text": "The initial conditions of the universe were not merely accidental or unexplained.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "initial-conditions",
       "cosmology"
@@ -108,8 +92,6 @@
     "text": "The existence of contingent things points to some non-contingent explanatory ground.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "contingency",
       "metaphysics"
@@ -121,8 +103,6 @@
     "text": "A minimal creator or source of the universe exists, even if nothing else is known about it.",
     "category": "Minimal Deism",
     "gradientPosition": 1,
-    "specificityWeight": 1,
-    "tradition": "general",
     "tags": [
       "creator",
       "source"
@@ -139,8 +119,6 @@
     "text": "The universe was intentionally caused rather than accidentally caused.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "intention",
       "causation"
@@ -154,8 +132,6 @@
     "text": "The universe was caused by something with goal-directed features.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "teleology",
       "causation"
@@ -170,8 +146,6 @@
     "text": "The structure of the universe is better explained by design than by chance, necessity, or unknown impersonal processes.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "design",
       "explanation"
@@ -186,8 +160,6 @@
     "text": "The apparent fine-tuning of physical constants is evidence of purposeful calibration.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "fine-tuning",
       "design"
@@ -203,8 +175,6 @@
     "text": "The universe was created for the emergence of life.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "life",
       "purpose"
@@ -220,8 +190,6 @@
     "text": "The universe was created for the emergence of conscious beings.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "consciousness",
       "purpose"
@@ -238,8 +206,6 @@
     "text": "The creator had some preference for order over chaos.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "order",
       "preference"
@@ -254,8 +220,6 @@
     "text": "The creator had some preference for life-permitting conditions over non-life-permitting conditions.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "life-permitting",
       "preference"
@@ -271,8 +235,6 @@
     "text": "The creator is more like an intelligent agent than an impersonal force.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "agency",
       "intelligence"
@@ -288,8 +250,6 @@
     "text": "The creator intentionally established a stable order that could support meaningful interaction with conscious beings.",
     "category": "Design Deism",
     "gradientPosition": 2,
-    "specificityWeight": 2,
-    "tradition": "general",
     "tags": [
       "order",
       "purpose",
@@ -307,8 +267,6 @@
     "text": "The creator has something analogous to mind, intention, or awareness.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "mind",
       "awareness"
@@ -322,8 +280,6 @@
     "text": "The creator is aware of the universe after creating it.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "awareness",
       "creation"
@@ -337,8 +293,6 @@
     "text": "The creator is aware of conscious creatures within the universe.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "awareness",
       "humans"
@@ -353,8 +307,6 @@
     "text": "The creator is capable of choosing between alternative possible actions.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "choice",
       "agency"
@@ -368,8 +320,6 @@
     "text": "The creator has purposes related to human beings.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "purpose",
       "humans"
@@ -385,8 +335,6 @@
     "text": "The creator cares about whether humans understand reality accurately.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "truth",
       "humans"
@@ -401,8 +349,6 @@
     "text": "The creator can act within the universe after its initial creation.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "intervention-capacity",
       "agency"
@@ -417,8 +363,6 @@
     "text": "The creator can communicate information to human beings.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "communication",
       "revelation-capacity"
@@ -434,8 +378,6 @@
     "text": "The creator can respond differently to different human actions, prayers, or requests.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "response",
       "prayer-capacity"
@@ -451,8 +393,6 @@
     "text": "The creator is not merely the source of the universe but an ongoing personal agent.",
     "category": "Personal Theism",
     "gradientPosition": 3,
-    "specificityWeight": 3,
-    "tradition": "general",
     "tags": [
       "personal-theism",
       "agency"
@@ -469,8 +409,6 @@
     "text": "The Christian God actively responds to human persons rather than only sustaining the universe impersonally.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "Christian God",
       "response",
@@ -487,8 +425,6 @@
     "text": "The Christian God sometimes answers petitionary prayer in ways not reducible to chance, coincidence, or ordinary causation.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "prayer",
       "answered prayer",
@@ -504,8 +440,6 @@
     "text": "The Christian God sometimes miraculously heals physical or psychological conditions.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "healing",
       "miracle",
@@ -522,8 +456,6 @@
     "text": "The Christian God sometimes provides guidance or wisdom that improves human judgment beyond ordinary reflection.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "wisdom",
       "guidance",
@@ -540,8 +472,6 @@
     "text": "The Christian God sometimes gives people morally corrective conviction or discernment.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "moral guidance",
       "conviction",
@@ -558,8 +488,6 @@
     "text": "The Christian God sometimes provides foreknowledge, warnings, or prophetic insight about future events.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "foreknowledge",
       "prophecy",
@@ -575,8 +503,6 @@
     "text": "The Christian God sometimes communicates through dreams, impressions, visions, or other experiences without those experiences being merely psychological.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "dreams",
       "visions",
@@ -592,8 +518,6 @@
     "text": "The Christian God sometimes protects, delivers, or redirects people through providential events.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "providence",
       "protection",
@@ -610,8 +534,6 @@
     "text": "The Christian God sometimes brings durable moral or spiritual transformation that exceeds ordinary social or psychological explanation.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "transformation",
       "sanctification",
@@ -628,8 +550,6 @@
     "text": "Some Christian claims of divine action can be responsibly distinguished from ordinary coincidence, suggestion, or social reinforcement.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
-    "specificityWeight": 4,
-    "tradition": "Christianity",
     "tags": [
       "evidence",
       "discernment",
@@ -648,8 +568,6 @@
     "text": "The Christian God reveals truth about himself to humans rather than leaving humans to infer everything from nature alone.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "revelation",
       "Christian God",
@@ -666,8 +584,6 @@
     "text": "Christian scripture reliably conveys core truths that the Christian God wants humans to know.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "scripture",
       "revelation",
@@ -683,8 +599,6 @@
     "text": "Jesus is the central and uniquely authoritative revelation of the Christian God's character and purposes.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "Jesus",
       "revelation",
@@ -701,8 +615,6 @@
     "text": "Jesus' resurrection is a substantiable miracle that vindicates Christian claims about God.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "Jesus",
       "resurrection",
@@ -720,8 +632,6 @@
     "text": "The Christian God forgives sins and reconciles humans to himself through Jesus Christ.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "forgiveness",
       "reconciliation",
@@ -738,8 +648,6 @@
     "text": "The Holy Spirit is an active divine agent who guides, teaches, empowers, and comforts believers.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "Holy Spirit",
       "guidance",
@@ -756,8 +664,6 @@
     "text": "The Christian God can give spiritual gifts such as prophecy, healing, wisdom, discernment, or tongues.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "spiritual gifts",
       "prophecy",
@@ -777,8 +683,6 @@
     "text": "Christian prayer, worship, and obedience can become real channels of interaction with God rather than only human ritual.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "prayer",
       "worship",
@@ -795,8 +699,6 @@
     "text": "The Christian God can guide communities as well as individuals toward truth, repentance, and moral correction.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "community",
       "truth",
@@ -814,8 +716,6 @@
     "text": "The core Christian picture is true: God personally acts through Christ and the Spirit to save, guide, heal, and transform human beings.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
     "tags": [
       "Jesus",
       "Holy Spirit",
