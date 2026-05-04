@@ -11,7 +11,7 @@ import {
   substantiationGap
 } from "./scoring.js";
 
-const storageKey = "theism-gradient-profile-v2-christianity";
+const storageKey = "theism-gradient-profile-v3-christian-action";
 
 const state = {
   claims: [],

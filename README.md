@@ -1,6 +1,6 @@
 # Theism Gradient
 
-A local, dependency-free dashboard for assessing Christianity-focused God-related claims on a five-part deism-to-Christian-theism gradient.
+A local, dependency-free dashboard for assessing Christianity-focused God-related claims, especially general claims about divine action, prayer, healing, wisdom, foreknowledge, guidance, and transformation.
 
 The app rates 50 auditable claims using confidence and personal-substantiation sliders, stores responses in `localStorage`, and computes:
 

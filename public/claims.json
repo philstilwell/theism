@@ -285,18 +285,21 @@
   },
   {
     "id": "C020",
-    "text": "The creator intentionally set the universe in motion but does not clearly intervene after creation.",
+    "text": "The creator intentionally established a stable order that could support meaningful interaction with conscious beings.",
     "category": "Design Deism",
     "gradientPosition": 2,
     "specificityWeight": 2,
     "tradition": "general",
     "tags": [
-      "deism",
-      "non-intervention"
+      "order",
+      "purpose",
+      "interaction"
     ],
     "dependencyIds": [
       "C010",
-      "C011"
+      "C011",
+      "C016",
+      "C017"
     ]
   },
   {
@@ -463,65 +466,68 @@
   },
   {
     "id": "C031",
-    "text": "God has intervened in the physical world after the universe began.",
+    "text": "The Christian God actively responds to human persons rather than only sustaining the universe impersonally.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "intervention",
-      "history"
+      "Christian God",
+      "response",
+      "personal agency"
     ],
     "dependencyIds": [
       "C027",
+      "C029",
       "C030"
     ]
   },
   {
     "id": "C032",
-    "text": "God can perform public, detectable miracles rather than only private or inward experiences.",
+    "text": "The Christian God sometimes answers petitionary prayer in ways not reducible to chance, coincidence, or ordinary causation.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "miracle",
-      "detection"
+      "prayer",
+      "answered prayer",
+      "causation"
     ],
     "dependencyIds": [
-      "C027",
+      "C029",
       "C031"
     ]
   },
   {
     "id": "C033",
-    "text": "God can answer prayer in ways that differ from chance or ordinary causation.",
+    "text": "The Christian God sometimes miraculously heals physical or psychological conditions.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "prayer",
-      "intervention",
-      "causation"
+      "healing",
+      "miracle",
+      "health"
     ],
     "dependencyIds": [
-      "C021",
-      "C022",
       "C027",
-      "C029"
+      "C031",
+      "C032"
     ]
   },
   {
     "id": "C034",
-    "text": "God can communicate specific moral, historical, or theological information to human beings.",
+    "text": "The Christian God sometimes provides guidance or wisdom that improves human judgment beyond ordinary reflection.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "communication",
-      "revelation"
+      "wisdom",
+      "guidance",
+      "discernment"
     ],
     "dependencyIds": [
       "C026",
@@ -531,31 +537,33 @@
   },
   {
     "id": "C035",
-    "text": "Some prophetic or revelatory claims can be genuinely caused by God rather than merely by human religious imagination.",
+    "text": "The Christian God sometimes gives people morally corrective conviction or discernment.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "prophecy",
-      "revelation"
+      "moral guidance",
+      "conviction",
+      "discernment"
     ],
     "dependencyIds": [
+      "C026",
       "C028",
       "C034"
     ]
   },
   {
     "id": "C036",
-    "text": "Some sacred texts can preserve information from God without every interpretive tradition about those texts being correct.",
+    "text": "The Christian God sometimes provides foreknowledge, warnings, or prophetic insight about future events.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
-    "tradition": "general",
+    "tradition": "Christianity",
     "tags": [
-      "scripture",
-      "revelation",
-      "interpretation"
+      "foreknowledge",
+      "prophecy",
+      "future events"
     ],
     "dependencyIds": [
       "C034",
@@ -564,261 +572,263 @@
   },
   {
     "id": "C037",
-    "text": "The Hebrew Bible can function as a historically and theologically relevant background for evaluating Christian claims.",
+    "text": "The Christian God sometimes communicates through dreams, impressions, visions, or other experiences without those experiences being merely psychological.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
     "tradition": "Christianity",
     "tags": [
-      "Hebrew Bible",
-      "background",
-      "covenant"
+      "dreams",
+      "visions",
+      "religious experience"
     ],
     "dependencyIds": [
-      "C035",
-      "C036"
+      "C028",
+      "C034"
     ]
   },
   {
     "id": "C038",
-    "text": "First-century reports about Jesus can be assessed as historical claims rather than only as later community symbolism.",
+    "text": "The Christian God sometimes protects, delivers, or redirects people through providential events.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
     "tradition": "Christianity",
     "tags": [
-      "Jesus",
-      "history",
-      "method"
+      "providence",
+      "protection",
+      "guidance"
     ],
     "dependencyIds": [
-      "C031",
-      "C036"
+      "C025",
+      "C027",
+      "C031"
     ]
   },
   {
     "id": "C039",
-    "text": "Jesus' ministry plausibly included public acts or teachings that his earliest followers reasonably interpreted as signs of divine authority.",
+    "text": "The Christian God sometimes brings durable moral or spiritual transformation that exceeds ordinary social or psychological explanation.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
     "tradition": "Christianity",
     "tags": [
-      "Jesus",
-      "miracle",
-      "authority"
+      "transformation",
+      "sanctification",
+      "character"
     ],
     "dependencyIds": [
-      "C032",
+      "C025",
       "C034",
-      "C038"
+      "C031"
     ]
   },
   {
     "id": "C040",
-    "text": "God has made enough evidence available for humans to identify Christianity as a serious candidate for revealed religion.",
+    "text": "Some Christian claims of divine action can be responsibly distinguished from ordinary coincidence, suggestion, or social reinforcement.",
     "category": "Interventionist Theism",
     "gradientPosition": 4,
     "specificityWeight": 4,
     "tradition": "Christianity",
     "tags": [
-      "Christianity",
       "evidence",
-      "revelation"
+      "discernment",
+      "divine action"
     ],
     "dependencyIds": [
       "C026",
-      "C034",
-      "C036",
-      "C038"
+      "C031",
+      "C032",
+      "C033",
+      "C036"
     ]
   },
   {
     "id": "C041",
-    "text": "The God relevant to Christianity is the God of Israel identified in the Hebrew Bible as YHWH.",
+    "text": "The Christian God reveals truth about himself to humans rather than leaving humans to infer everything from nature alone.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
     "tags": [
-      "YHWH",
-      "Hebrew Bible",
-      "Christianity"
+      "revelation",
+      "Christian God",
+      "truth"
     ],
     "dependencyIds": [
-      "C037",
+      "C028",
+      "C034",
       "C040"
     ]
   },
   {
     "id": "C042",
-    "text": "Jesus of Nazareth was bodily resurrected after death.",
+    "text": "Christian scripture reliably conveys core truths that the Christian God wants humans to know.",
+    "category": "Specific Christian Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "scripture",
+      "revelation",
+      "reliability"
+    ],
+    "dependencyIds": [
+      "C036",
+      "C041"
+    ]
+  },
+  {
+    "id": "C043",
+    "text": "Jesus is the central and uniquely authoritative revelation of the Christian God's character and purposes.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
     "tags": [
       "Jesus",
-      "resurrection",
-      "history"
+      "revelation",
+      "authority"
     ],
     "dependencyIds": [
-      "C031",
-      "C032",
-      "C038",
-      "C039"
-    ]
-  },
-  {
-    "id": "C043",
-    "text": "The resurrection of Jesus, if substantiated, is best explained as divine vindication rather than as an unknown natural anomaly.",
-    "category": "Specific Christian Theism",
-    "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
-    "tags": [
-      "resurrection",
-      "explanation",
-      "vindication"
-    ],
-    "dependencyIds": [
-      "C030",
-      "C031",
-      "C040",
+      "C034",
+      "C041",
       "C042"
     ]
   },
   {
     "id": "C044",
-    "text": "Jesus was not merely a prophet or teacher but uniquely divine in the sense affirmed by historic Christianity.",
+    "text": "Jesus' resurrection is a substantiable miracle that vindicates Christian claims about God.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
     "tags": [
       "Jesus",
-      "divinity",
-      "Christology"
+      "resurrection",
+      "miracle"
     ],
     "dependencyIds": [
-      "C034",
-      "C038",
-      "C042",
+      "C031",
+      "C032",
+      "C040",
       "C043"
     ]
   },
   {
     "id": "C045",
-    "text": "The incarnation claim that God became human in Jesus is substantiable rather than only a later theological metaphor.",
+    "text": "The Christian God forgives sins and reconciles humans to himself through Jesus Christ.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
     "tags": [
-      "incarnation",
-      "Jesus",
-      "Christology"
+      "forgiveness",
+      "reconciliation",
+      "Jesus"
     ],
     "dependencyIds": [
+      "C025",
       "C041",
-      "C042",
       "C044"
     ]
   },
   {
     "id": "C046",
-    "text": "The crucifixion of Jesus had a divinely intended salvific function.",
-    "category": "Specific Christian Theism",
-    "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
-    "tags": [
-      "crucifixion",
-      "atonement",
-      "salvation"
-    ],
-    "dependencyIds": [
-      "C025",
-      "C034",
-      "C042",
-      "C044"
-    ]
-  },
-  {
-    "id": "C047",
-    "text": "The New Testament reliably preserves the central divine claims about Jesus.",
-    "category": "Specific Christian Theism",
-    "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
-    "tags": [
-      "New Testament",
-      "Jesus",
-      "textual-reliability"
-    ],
-    "dependencyIds": [
-      "C036",
-      "C038",
-      "C042",
-      "C044"
-    ]
-  },
-  {
-    "id": "C048",
-    "text": "The earliest apostolic proclamation about Jesus was authorized by God rather than merely by human religious enthusiasm.",
-    "category": "Specific Christian Theism",
-    "gradientPosition": 5,
-    "specificityWeight": 5,
-    "tradition": "Christianity",
-    "tags": [
-      "apostles",
-      "authority",
-      "church"
-    ],
-    "dependencyIds": [
-      "C034",
-      "C040",
-      "C042",
-      "C047"
-    ]
-  },
-  {
-    "id": "C049",
-    "text": "The Holy Spirit continues God's personal agency in Christian life, worship, and moral transformation.",
+    "text": "The Holy Spirit is an active divine agent who guides, teaches, empowers, and comforts believers.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
     "tags": [
       "Holy Spirit",
-      "agency",
-      "transformation"
+      "guidance",
+      "empowerment"
     ],
     "dependencyIds": [
       "C030",
-      "C033",
-      "C044",
-      "C048"
+      "C034",
+      "C041"
     ]
   },
   {
-    "id": "C050",
-    "text": "Historic Christianity's core claim is true: the triune God has acted through Jesus Christ for human salvation.",
+    "id": "C047",
+    "text": "The Christian God can give spiritual gifts such as prophecy, healing, wisdom, discernment, or tongues.",
     "category": "Specific Christian Theism",
     "gradientPosition": 5,
     "specificityWeight": 5,
     "tradition": "Christianity",
     "tags": [
-      "Trinity",
-      "Jesus",
-      "salvation",
-      "Christianity"
+      "spiritual gifts",
+      "prophecy",
+      "healing",
+      "wisdom"
     ],
     "dependencyIds": [
-      "C041",
+      "C032",
+      "C033",
+      "C034",
+      "C036",
+      "C046"
+    ]
+  },
+  {
+    "id": "C048",
+    "text": "Christian prayer, worship, and obedience can become real channels of interaction with God rather than only human ritual.",
+    "category": "Specific Christian Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "prayer",
+      "worship",
+      "obedience"
+    ],
+    "dependencyIds": [
+      "C032",
+      "C034",
+      "C046"
+    ]
+  },
+  {
+    "id": "C049",
+    "text": "The Christian God can guide communities as well as individuals toward truth, repentance, and moral correction.",
+    "category": "Specific Christian Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "community",
+      "truth",
+      "repentance"
+    ],
+    "dependencyIds": [
+      "C034",
+      "C040",
+      "C046",
+      "C048"
+    ]
+  },
+  {
+    "id": "C050",
+    "text": "The core Christian picture is true: God personally acts through Christ and the Spirit to save, guide, heal, and transform human beings.",
+    "category": "Specific Christian Theism",
+    "gradientPosition": 5,
+    "specificityWeight": 5,
+    "tradition": "Christianity",
+    "tags": [
+      "Jesus",
+      "Holy Spirit",
+      "salvation",
+      "healing",
+      "transformation"
+    ],
+    "dependencyIds": [
+      "C043",
       "C044",
       "C045",
       "C046",
+      "C047",
       "C049"
     ]
   }
