@@ -1002,13 +1002,17 @@ textarea {
   font-size: 0.82rem;
 }
 
-.claim-controls label span {
+.score-heading {
   display: flex;
   justify-content: space-between;
   gap: 8px;
 }
 
-.claim-controls label span strong {
+.score-label {
+  display: inline;
+}
+
+.score-label strong {
   font-weight: 900;
 }
 

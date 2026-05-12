@@ -920,12 +920,12 @@ function renderClaims() {
         </div>
         <div class="claim-controls">
           <label>
-            <span><strong>C</strong>onfidence <b>${Math.round(response.confidence)}</b></span>
+            <span class="score-heading"><span class="score-label"><strong>C</strong>onfidence</span><b>${Math.round(response.confidence)}</b></span>
             <input data-field="confidence" type="range" min="0" max="100" value="${response.confidence}">
             <small class="scale-anchors"><span>0 no confidence</span><span>50 plausible</span><span>100 maximal</span></small>
           </label>
           <label>
-            <span><strong>P</strong>ersonal substantiation <b>${Math.round(response.personalSubstantiation)}</b></span>
+            <span class="score-heading"><span class="score-label"><strong>P</strong>ersonal substantiation</span><b>${Math.round(response.personalSubstantiation)}</b></span>
             <input data-field="personalSubstantiation" type="range" min="0" max="100" value="${response.personalSubstantiation}">
             <small class="scale-anchors"><span>0 cannot defend</span><span>50 partial case</span><span>100 personally robust</span></small>
           </label>
