@@ -771,6 +771,12 @@ textarea {
   border-bottom: 1px solid var(--line);
 }
 
+.qa-panel {
+  margin-top: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
 .lens-panel {
   margin-top: 18px;
   padding: 18px 0;
@@ -818,7 +824,14 @@ textarea {
   gap: 10px;
 }
 
+.qa-accordion {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
 .guide-accordion details,
+.qa-accordion details,
 .annotation {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -826,6 +839,7 @@ textarea {
 }
 
 .guide-accordion summary,
+.qa-accordion summary,
 .annotation summary {
   min-height: 40px;
   padding: 10px 12px;
@@ -835,6 +849,7 @@ textarea {
 }
 
 .guide-accordion p,
+.qa-accordion p,
 .annotation p {
   margin: 0;
   color: var(--muted);
@@ -844,6 +859,16 @@ textarea {
 
 .guide-accordion details p {
   padding: 0 12px 12px;
+}
+
+.qa-body {
+  display: grid;
+  gap: 10px;
+  padding: 0 12px 14px;
+}
+
+.qa-body p {
+  font-size: 0.88rem;
 }
 
 .section-heading {
@@ -1107,6 +1132,7 @@ textarea {
   .report-grid,
   .analysis-grid,
   .guide-accordion,
+  .qa-accordion,
   .lens-buttons,
   .category-progress,
   .hub-layout,
